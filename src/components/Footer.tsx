@@ -1,5 +1,5 @@
 import "../styles/Footer.css";
-import footerIconUrl from "../assets/eqw 1.svg";
+import footerIconUrl from "../assets/img/eqw 1.svg";
 
 function Footer() {
     return (

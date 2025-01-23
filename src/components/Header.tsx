@@ -1,5 +1,5 @@
 import "../styles/Header.css";
-import headerIconUrl from "../assets/SGN_09_24_2022_1663968217400 1.svg";
+import headerIconUrl from "../assets/img/SGN_09_24_2022_1663968217400 1.svg";
 import { NavLink } from "react-router-dom";
 
 function Header() {
