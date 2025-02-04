@@ -1,7 +1,11 @@
 import "../styles/Main.css";
-import WhyUs from "../assets/img/Main/Group14.svg";
 import SearchImg from "../assets/img/Main/Group19.svg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import WhyUsImg from "../assets/img/Main/Group14.svg";
 import Rates from "../pages/Rates.tsx";
+import Carousel from "../components/Carousel.tsx"
+
 
 function Main() {
     return (
@@ -9,22 +13,19 @@ function Main() {
             <div className="search">
                 <div className="container">
                     <div className="title-container">
-                        <h1>сервис&nbsp;по&nbsp;поиску</h1>
-                        <h1>публикаций</h1>
-                        <h1>о&nbsp;компании</h1>
-                        <h1>по&nbsp;его&nbsp;ИНН</h1>
+                        <h1>сервис по поиску<br/>публикаций<br/>о компании<br/>по его ИНН</h1>
                     </div>
-                    <p>Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.</p>
+                    <p>Комплексный анализ публикаций, получение данных<br/>в формате PDF на электронную почту.</p>
                     <button className="request-btn">Запросить данные</button>
                 </div>
-                <div className="search-img">
+                <div>
                     <img src={SearchImg} alt="сервис по поиску публикаций о компании по его ИНН" />
                 </div>
             </div>
             <h2>Почему именно мы</h2>
-            {/* <Carousel /> */}
+            <Carousel />
             <div className="why-us">
-                <img src={WhyUs} alt="Почему именно мы" />
+                <img src={WhyUsImg} alt="Почему именно мы" />
             </div>
             <Rates />
         </div>

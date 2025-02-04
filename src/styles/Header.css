@@ -1,8 +1,9 @@
 .header {
     position: relative;
     width: 100%;
+    min-height: 15vh;
     height: 80px;
-    background-color: #fff;
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +35,7 @@
     font-weight: 400;
     line-height: 16.94px;
     text-decoration: none;
-    color: #000;
+    color: #000000;
     text-align: center;
 }
 
@@ -90,3 +91,171 @@
     background-color: #029491;
     color: #fff;
 }
+
+.user-info {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    text-align: right;
+}
+
+.user span{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    /*text-align: right;*/
+}
+
+.user a {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12.1px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    opacity: 40%;
+    padding: 0px;
+}
+
+.avatar img {
+    height: 50px;
+    width: 50px;
+}
+
+.logout-button{
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12.1px;
+    text-decoration: none;
+    color: #000000;
+    text-align: right;
+}
+
+.logout-button:hover {
+    color: #029491;
+}
+
+.limit-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    width: 175px;
+    border-radius: 5px;
+    margin-inline: 49px;
+    background-color: #F2F2F2;
+    list-style-type: none;
+    vertical-align: middle;
+}
+
+.limit-info-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    width: 175px;
+    border-radius: 5px;
+    margin-inline: 49px;
+    background-color: #F2F2F2;
+    list-style-type: none;
+    vertical-align: middle;
+}
+
+.limit-info-text {
+    padding: 7px 10px 7px 10px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 18px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-align: right;
+    opacity: 40%;
+}
+
+.limit-quantity {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.94px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.limit-quantity-green {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.94px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #8AC540;
+}
+
+.loader {
+    color: #000000;
+    opacity: 50%;
+    font-size: 3px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    animation: mulShdSpin 1.3s infinite linear;
+    transform: translateZ(0);
+}
+
+@keyframes mulShdSpin {
+    0%,
+    100% {
+        box-shadow: 0 -3em 0 0.2em,
+        2em -2em 0 0em, 3em 0 0 -1em,
+        2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em,
+        -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em,
+        3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em,
+        -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em,
+        2em -2em 0 0, 3em 0 0 0.2em,
+        2em 2em 0 0, 0 3em 0 -1em,
+        -2em 2em 0 -1em, -3em 0 0 -1em,
+        -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+        3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
+        -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+        3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
+        -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
+        3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
+        -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em,
+        3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em,
+        3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
+        -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+

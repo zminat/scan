@@ -1,11 +1,11 @@
-.tariff-container {
+.rate-container {
     display: flex;
     gap: 38px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.tariff-card {
+.rate-card {
     position: relative;
     width: 415px;
     height: 540px;
@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 20px 0px #00000033;
 }
 
-.tariff-card.current {
+.rate-card.current {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -136,6 +136,7 @@
     color: #FFFFFF;
     background: #5970FF;
     width: 90%;
+    cursor: pointer;
 }
 
 .btn.current-btn {

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import TariffCard from '../components/TariffCard.tsx';
+import { useState } from 'react';
+import RateCard from '../components/RateCard.tsx';
 import '../styles/Rates.css';
 import Beginner from "../assets/img/Rates/beginner-icon.svg";
 import Pro from "../assets/img/Rates/pro-icon.svg";
 import Business from "../assets/img/Rates/business-icon.svg";
 
 const Rates: React.FC = () => {
-    const tariffs = [
+    const rates = [
         {
             id: 1,
             title: 'Beginner',
@@ -56,31 +56,31 @@ const Rates: React.FC = () => {
         },
     ];
 
-    const [activeTariffId, setActiveTariffId] = useState<number | null>(null);
+    const [activeRateId, setActiveRateId] = useState<number | null>(null);
 
     const handleCardClick = (id: number) => {
-        setActiveTariffId(id);
+        setActiveRateId(id);
     };
 
     return (
         <div className="app">
             <h2>Наши тарифы</h2>
-            <div className="tariff-container">
-                {tariffs.map((tariff) => (
-                    <TariffCard
-                        key={tariff.id}
-                        title={tariff.title}
-                        description={tariff.description}
-                        imageSrc={tariff.imageSrc}
-                        price={tariff.price}
-                        oldPrice={tariff.oldPrice}
-                        installments={tariff.installments}
-                        details={tariff.details}
-                        isCurrent={tariff.isCurrent}
-                        backgroundColor={tariff.backgroundColor}
-                        color={tariff.color}
-                        isActive={tariff.id === activeTariffId}
-                        onClick={() => handleCardClick(tariff.id)}
+            <div className="rate-container">
+                {rates.map((rate) => (
+                    <RateCard
+                        key={rate.id}
+                        title={rate.title}
+                        description={rate.description}
+                        imageSrc={rate.imageSrc}
+                        price={rate.price}
+                        oldPrice={rate.oldPrice}
+                        installments={rate.installments}
+                        details={rate.details}
+                        isCurrent={rate.isCurrent}
+                        backgroundColor={rate.backgroundColor}
+                        color={rate.color}
+                        isActive={rate.id === activeRateId}
+                        onClick={() => handleCardClick(rate.id)}
                     />
                 ))}
             </div>
