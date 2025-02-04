@@ -29,7 +29,7 @@ function LoginPage() {
 
             const data = await response.json();
             localStorage.setItem("accessToken", data.accessToken);
-            localStorage.setItem("tokenExpire", data.tokenExpire);
+            localStorage.setItem("tokenExpire", data.expire);
             setIsLoggedIn(true);
             navigate("/");
         } catch (error) {
