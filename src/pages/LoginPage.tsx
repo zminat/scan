@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext.tsx";
+import { useAuth } from "../components/AuthContext.tsx";
 import "../styles/LoginPage.css";
 import CharactersImg from "../assets/img/LoginPage/Characters.svg";
 import Google from "../assets/img/LoginPage/Google.svg";
 import Facebook from "../assets/img/LoginPage/Facebook.svg";
 import Yandex from "../assets/img/LoginPage/Яндекс.svg";
-import {LOGIN_URL} from "./API.tsx";
+import {LOGIN_URL} from "../components/API.tsx";
 
 function LoginPage() {
     const [login, setLogin] = useState("");

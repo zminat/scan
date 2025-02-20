@@ -16,10 +16,10 @@ body {
 h1 {
   font-family: "Ferry", serif;
   text-transform: uppercase;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 900;
-  line-height: 72px;
-  letter-spacing: 0.01em;
+  line-height: 48px;
+  letter-spacing: 0.02em;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;

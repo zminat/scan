@@ -56,7 +56,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ title, imageSrc, text }) =>
 const Carousel: React.FC = () => {
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -73,7 +73,7 @@ const Carousel: React.FC = () => {
         { title: 'Clock', imageSrc: ClockImg, text: 'Высокая и оперативная скорость обработки заявки' },
         { title: 'Glass', imageSrc: GlassImg, text: 'Огромная комплексная база данных, обеспечивающая объективный ответ на запрос' },
         { title: 'Shield', imageSrc: ShieldImg, text: 'Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству' },
-        { title: 'Clock', imageSrc: ClockImg, text: 'Высокая скорость обработки' },
+        // { title: 'Clock', imageSrc: ClockImg, text: 'Высокая скорость обработки' },
 
     ];
 

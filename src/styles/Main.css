@@ -45,14 +45,6 @@ main {
     gap: 10px;
 }
 
-.search h1 {
-    margin: 0;
-    font-size: 60px;
-    font-weight: 900;
-    line-height: 72px;
-    letter-spacing: 0.01em;
-}
-
 .search p {
     font-size: 18px;
     line-height: 28px;

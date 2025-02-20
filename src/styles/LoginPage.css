@@ -77,14 +77,14 @@
     cursor: default;
 }
 
-label {
+.login-page label {
     display: block;
     margin: 25px;
     font-size: 14px;
     color: #949494;
 }
 
-input {
+.login-page input {
     margin-top: 15px;
     font-size: 14px;
     width: 379px;

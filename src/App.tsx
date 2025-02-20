@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./pages/Main";
-import LoginPage from "./components/LoginPage.tsx";
-import "./App.css";
+import LoginPage from "./pages/LoginPage.tsx";
+import Search from "./pages/Search.tsx";
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/auth" element={<LoginPage />} />
+                    <Route path="/search" element={<Search />} />
                 </Routes>
             </main>
             <Footer />
