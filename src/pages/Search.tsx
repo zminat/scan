@@ -9,15 +9,12 @@ function Search() {
     return (
         <div>
             <div className="search">
-                <div className="container">
-                    <div className="title-container">
-                        <h1>Найдите необходимые данные в пару кликов.</h1>
-                    </div>
-                    <p>Задайте параметры поиска. <br/>
+                <div className="title-container">
+                    <h1>Найдите необходимые данные в пару кликов.</h1>
+                    <p className="title-context">Задайте параметры поиска. <br/>
                         Чем больше заполните, тем точнее поиск</p>
                     <SearchForm />
                 </div>
-
                 <div className="search-images">
                     <div className="documents">
                         <img className="document" src={DocumentImg} alt="Документ" />
@@ -25,9 +22,6 @@ function Search() {
                     </div>
                     <img className="searching-man" src={SearchingManImg} alt="Мужчина с лупой" />
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
     );

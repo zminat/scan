@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import RateCard from '../components/RateCard.tsx';
+import RateCard from './RateCard.tsx';
 import '../styles/Rates.css';
 import Beginner from "../assets/img/Rates/beginner-icon.svg";
 import Pro from "../assets/img/Rates/pro-icon.svg";

@@ -61,7 +61,7 @@ const Carousel: React.FC = () => {
         slidesToShow: 3,
         slidesToScroll: 1,
         arrows: true,
-        centerMode: true,
+        centerMode: false,
         centerPadding: "20px",
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,

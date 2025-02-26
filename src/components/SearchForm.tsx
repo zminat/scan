@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { isBefore, isValid, parseISO } from "date-fns";
+import {useState} from "react";
+import {isBefore, isValid, parseISO} from "date-fns";
 import "../styles/SearchForm.css";
+import Checkboxes from "./Checkboxes.tsx";
+import {useNavigate} from "react-router-dom";
 
 const validateINN = (inn: string) => {
     return /^\d{10}$/.test(inn);
@@ -8,22 +10,27 @@ const validateINN = (inn: string) => {
 
 const SearchForm: React.FC = () => {
     const [companyINN, setCompanyINN] = useState("");
-    const [tonality, setTonality] = useState("Любая");
+    const [touchedINN, setTouchedINN] = useState(false);
+    const [tonality, setTonality] = useState("any");
     const [docCount, setDocCount] = useState("");
+    const [touchedDocCount, setTouchedDocCount] = useState(false);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [options, setOptions] = useState({
-        fullCoverage: true,
-        businessContext: true,
-        mainRole: true,
-        riskFactors: false,
-        marketNews: false,
-        announcements: true,
-        newsSummaries: false,
+    const navigate = useNavigate();
+
+    const [checkboxStates, setCheckboxStates] = useState<Record<string, boolean>>({
+        maxCompleteness: false,
+        businessMentions: false,
+        mainRole: false,
+        riskFactorsOnly: false,
+        includeMarketNews: false,
+        includeAnnouncements: false,
+        includeNewsSummaries: false,
     });
 
-    const handleCheckboxChange = (option: keyof typeof options) => {
-        setOptions((prev) => ({ ...prev, [option]: !prev[option] }));
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const {name} = event.target as { name: keyof typeof checkboxStates };
+        setCheckboxStates((prev) => ({...prev, [name]: !prev[name]}));
     };
 
     const today = new Date();
@@ -38,83 +45,115 @@ const SearchForm: React.FC = () => {
 
     const isFormValid = isINNValid && isDocCountValid && isStartDateValid && isEndDateValid && isDateRangeValid;
 
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (isFormValid) {
+
+            const searchParams = {
+                issueDateInterval: {
+                    startDate: `${startDate}T00:00:00+03:00`,
+                    endDate: `${endDate}T23:59:59+03:00`
+                },
+                searchContext: {
+                    targetSearchEntitiesContext: {
+                        targetSearchEntities: [{
+                            type: "company",
+                            inn: companyINN,
+                            maxFullness: checkboxStates.maxCompleteness,
+                        }],
+                        onlyMainRole: checkboxStates.mainRole,
+                        tonality: tonality,
+                        onlyWithRiskFactors: checkboxStates.riskFactorsOnly,
+                    }
+                },
+                attributeFilters: {
+                    excludeTechNews: !checkboxStates.includeMarketNews,
+                    excludeAnnouncements: !checkboxStates.includeAnnouncements,
+                    excludeDigests: !checkboxStates.includeNewsSummaries,
+                },
+                limit: Number(docCount),
+                sortType: "sourceInfluence",
+                sortDirectionType: "desc",
+                intervalType: "month",
+                histogramTypes: ["totalDocuments", "riskFactors"]
+            };
+
+            console.log('Отправка запроса на сервер с данными:', searchParams);
+
+            navigate('/results', {state: {searchParams: searchParams}});
+        } else {
+            console.log('Форма не валидна, перенаправление не выполнено.');
+        }
+    };
+
     return (
-        <div className="formContainer">
+        <form className="formContainer" onSubmit={handleSearch}>
             <div className="inputsContainer">
-                <label className="label">ИНН компании *</label>
-                <input
-                    type="text"
-                    className={`input ${!isINNValid ? "input-error" : ""}`}
-                    value={companyINN}
-                    onChange={(e) => setCompanyINN(e.target.value)}
-                    placeholder="10 цифр"
-                />
-                {!isINNValid && <p className="error-message">ИНН должен содержать 10 цифр</p>}
-
-                <label className="label">Тональность *</label>
-                <select className="custom-select" value={tonality} onChange={(e) => setTonality(e.target.value)}>
-                    <option value="Любая">Любая</option>
-                    <option value="Позитивная">Позитивная</option>
-                    <option value="Негативная">Негативная</option>
-                </select>
-
-                <label className="label">Количество документов в выдаче *</label>
-                <input
-                    type="number"
-                    className={`input ${!isDocCountValid ? "input-error" : ""}`}
-                    value={docCount}
-                    onChange={(e) => setDocCount(e.target.value)}
-                    placeholder="От 1 до 1000"
-                />
-                {!isDocCountValid && <p className="error-message">Введите число от 1 до 1000</p>}
-
-                <label className="label">Диапазон поиска *</label>
-                <div className="dateRange">
+                <div className="inputContainer">
+                    <label className="label">ИНН компании *</label>
                     <input
-                        type="date"
-                        className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
-                        placeholder="Дата начала"
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
+                        type="text"
+                        className={`input`}
+                        value={companyINN}
+                        onChange={(e) => setCompanyINN(e.target.value)}
+                        onBlur={() => setTouchedINN(true)}
+                        placeholder="10 цифр"
                     />
-                    <input
-                        type="date"
-                        className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
-                        value={endDate}
-                        placeholder="Дата конца"
-                        onChange={(e) => setEndDate(e.target.value)}
-                    />
+                    {touchedINN && !isINNValid && <p className="error-message">ИНН должен содержать 10 цифр</p>}
                 </div>
-                {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}
-            </div>
 
+                <div>
+                    <label className="label">Тональность *</label>
+                    <select className="custom-select" value={tonality} onChange={(e) => setTonality(e.target.value)}>
+                        <option value="any">Любая</option>
+                        <option value="positive">Позитивная</option>
+                        <option value="negative">Негативная</option>
+                    </select>
+                </div>
+
+                <div className="inputContainer">
+                    <label className="label">Количество документов в выдаче *</label>
+                    <input
+                        type="number"
+                        className={`input ${!isDocCountValid && touchedDocCount ? "input-error" : ""}`}
+                        value={docCount}
+                        onChange={(e) => setDocCount(e.target.value)}
+                        onBlur={() => setTouchedDocCount(true)}
+                        placeholder="От 1 до 1000"
+                    />
+                    {touchedDocCount && !isDocCountValid && <p className="error-message">Введите число от 1 до 1000</p>}
+                </div>
+
+                <div>
+                    <label className="label">Диапазон поиска *</label>
+                    <div className="dateRange">
+                        <input
+                            type="date"
+                            className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                        />
+                        <input
+                            type="date"
+                            className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                        />
+                    </div>
+                    {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}
+                </div>
+            </div>
             <div className="checkboxGroup">
-                {Object.entries(options).map(([key, value]) => (
-                    <label key={key} className="checkbox">
-                        <input type="checkbox" checked={value} onChange={() => handleCheckboxChange(key as keyof typeof options)} />
-                        {key === "fullCoverage"
-                            ? "Признак максимальной полноты"
-                            : key === "businessContext"
-                                ? "Упоминания в бизнес-контексте"
-                                : key === "mainRole"
-                                    ? "Главная роль в публикации"
-                                    : key === "riskFactors"
-                                        ? "Публикации только с риск-факторами"
-                                        : key === "marketNews"
-                                            ? "Включать технические новости рынков"
-                                            : key === "announcements"
-                                                ? "Включать анонсы и календари"
-                                                : "Включать сводки новостей"}
-                    </label>
-                ))}
+                <Checkboxes checkboxStates={checkboxStates} handleCheckboxChange={handleCheckboxChange}/>
                 <div className="button-container">
-                    <button className="button" disabled={!isFormValid}>
+                    <button className="button" type="submit" disabled={!isFormValid}>
                         Поиск
                     </button>
                     <p className="note">* Обязательные к заполнению поля</p>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
 

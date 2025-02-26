@@ -6,6 +6,7 @@ import CharactersImg from "../assets/img/LoginPage/Characters.svg";
 import Google from "../assets/img/LoginPage/Google.svg";
 import Facebook from "../assets/img/LoginPage/Facebook.svg";
 import Yandex from "../assets/img/LoginPage/Яндекс.svg";
+import LockImg from "../assets/img/LoginPage/Lock.svg"
 import {LOGIN_URL} from "../components/API.tsx";
 
 function LoginPage() {
@@ -44,53 +45,58 @@ function LoginPage() {
                 <h1>Для оформления подписки <br />на тариф, необходимо <br />авторизоваться.</h1>
                 <img src={CharactersImg} alt="Для оформления подписки на тариф, необходимо авторизоваться" />
             </div>
-            <div className="login-form">
-                <div className="form-tabs">
-                    <button className="login-btn">
-                        Войти
-                        <div className="tab-line" />
-                    </button>
-                    <button className="register-btn">
-                        Зарегистрироваться
-                        <div className="tab-line" />
-                    </button>
-                </div>
-                <form onSubmit={handleLogin}>
-                    <label>
-                        Логин или номер телефона:
-                        <input
-                            type="text"
-                            value={login}
-                            onChange={(e) => setLogin(e.target.value)}
-                            placeholder="Введите логин или номер телефона"
-                            required
-                        />
-                    </label>
-                    <label>
-                        Пароль:
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Введите пароль"
-                            required
-                        />
-                    </label>
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    <button type="submit" className="submit-button" disabled={!login || !password}>
-                        Войти
-                    </button>
-                </form>
-                <a href="#" className="forgot-password">Восстановить пароль</a>
-                <div className="social-login">
-                    <p>Войти через:</p>
-                    <div className="social-buttons">
-                        <button><img src={Google} alt="Google" /></button>
-                        <button><img src={Facebook} alt="Facebook" /></button>
-                        <button><img src={Yandex} alt="Яндекс" /></button>
+            <div className="login-form-container">
+                <img className="lock-icon" src={LockImg} alt="Lock image" />
+                <div className="login-form">
+
+                    <div className="form-tabs">
+                        <button className="login-btn">
+                            Войти
+                            <div className="tab-line" />
+                        </button>
+                        <button className="register-btn">
+                            Зарегистрироваться
+                            <div className="tab-line" />
+                        </button>
+                    </div>
+                    <form onSubmit={handleLogin}>
+                        <label>
+                            Логин или номер телефона:
+                            <input
+                                type="text"
+                                value={login}
+                                onChange={(e) => setLogin(e.target.value)}
+                                placeholder="Введите логин или номер телефона"
+                                required
+                            />
+                        </label>
+                        <label>
+                            Пароль:
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Введите пароль"
+                                required
+                            />
+                        </label>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <button type="submit" className="submit-button" disabled={!login || !password}>
+                            Войти
+                        </button>
+                    </form>
+                    <a href="#" className="forgot-password">Восстановить пароль</a>
+                    <div className="social-login">
+                        <p>Войти через:</p>
+                        <div className="social-buttons">
+                            <button><img src={Google} alt="Google" /></button>
+                            <button><img src={Facebook} alt="Facebook" /></button>
+                            <button><img src={Yandex} alt="Яндекс" /></button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

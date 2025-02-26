@@ -8,17 +8,22 @@
     font-family: "Inter", sans-serif;
 }
 
-.container h1 {
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 48px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    text-underline-position: from-font;
-}
+/*.container h1 {*/
+/*    font-size: 40px;*/
+/*    font-weight: 900;*/
+/*    line-height: 48px;*/
+/*    letter-spacing: 0.02em;*/
+/*    text-align: left;*/
+/*    text-underline-position: from-font;*/
+/*}*/
 
 .container img {
     margin-left: 12%;
+}
+
+.login-form-container {
+    width: 480px;
+    height: 578px;
 }
 
 .login-form {
@@ -26,9 +31,16 @@
     height: 523px;
     top: 162px;
     left: 870px;
+    margin-top: -40px;
+    margin-left: 45px;
     gap: 0px;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px #00000026;
+}
+
+.lock-icon {
+    width: 75.22px;
+    height: 92.06px;
 }
 
 .form-tabs {
@@ -73,7 +85,7 @@
 }
 
 .tab.active {
-    color: #029491;
+    color: var(--main-color);
     cursor: default;
 }
 
@@ -81,7 +93,7 @@
     display: block;
     margin: 25px;
     font-size: 14px;
-    color: #949494;
+    color: var(--grey);
 }
 
 .login-page input {
@@ -98,8 +110,8 @@
 
 .submit-button {
     margin: 25px;
-    background-color: #5970FF;
-    color: #FFFFFF;
+    background-color: var(--additional-blue-color);
+    color: var(--white);
     width: 379px;
     height: 59px;
     border-radius: 5px;
@@ -126,7 +138,7 @@
     letter-spacing: 0.02em;
     text-decoration-line: underline;
     text-underline-position: from-font;
-    color: #5970FF;
+    color: var(--additional-blue-color);
 }
 
 .social-login {
@@ -136,7 +148,7 @@
     line-height: 19.36px;
     letter-spacing: 0.02em;
     text-align: left;
-    color: #949494;
+    color: var(--grey);
 }
 
 .social-buttons {
@@ -151,14 +163,7 @@
     padding: 8px 16px;
     width: 96px;
     height: 31px;
-    border-radius: 1px;
+    border-radius: 3px;
     border: 1px solid #5970FF82;
     cursor: pointer;
-}
-
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin-bottom: 10px;
-    text-align: center;
 }

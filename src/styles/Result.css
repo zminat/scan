@@ -1,0 +1,15 @@
+h1 {
+    font-family: "Ferry", serif;
+    font-weight: 900;
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: 0.04em;
+}
+
+h2 {
+    font-family: "Ferry", serif;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0.02em;
+}

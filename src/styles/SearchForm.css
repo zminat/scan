@@ -1,39 +1,37 @@
 .formContainer {
+    width: 872px;
+    height: 543px;
     background: #FFFFFF;
     padding: 30px;
     display: flex;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px #00000026;
+    box-shadow: 0px 0px 20px 0px #00000033;
     min-width: 730px;
 }
 
 .formContainer p {
     font-size: 14px;
-    color: #949494;
+    color: var(--grey);
     margin-top: 10px;
     line-height: 16.94px;
+}
+
+.inputContainer {
+    width: 60%;
 }
 
 .label {
     display: block;
     margin: 10px;
     font-size: 14px;
-    color: #949494;
+    color: var(--grey);
 }
-
-/*.label p {*/
-/*    font-size: 14px;*/
-/*    font-weight: 500;*/
-/*    opacity: 100%;*/
-/*}*/
 
 .input,
 .select,
 .dateInput {
-    /*height: 43px;*/
-    width: 60%;
+    width: 100%;
     padding: 10px;
-    /*margin-bottom: 10px;*/
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
@@ -41,7 +39,7 @@
 
 .input,
 .dateInput::placeholder {
-    color: #949494;
+    color: var(--grey);
     text-align: center;
 }
 
@@ -58,7 +56,7 @@ select.custom-select {
 }
 
 select.custom-select:focus {
-    border-color: #949494;
+    border-color: var(--grey);
 }
 
 .dateInput {
@@ -70,44 +68,6 @@ select.custom-select:focus {
     gap: 10px;
 }
 
-.checkboxGroup {
-    width: 50%;
-    /*margin: 10px 0;*/
-}
-
-.checkbox {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin: 15px 0px;
-    gap: 17px;
-    border: 1px ;
-    border-radius: 0px;
-    color: #949494;
-}
-
-.checkbox input[type=checkbox] {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    margin: 0px;
-    border: 1px solid #949494;
-}
-
-.checkbox input[type=checkbox]:checked {
-    background-image: url('../assets/img/Main/icons8-галочка-96 9.svg');
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-position: center;
-    align-items: center;
-    border: 1px solid #000000;
-}
-
-.checkbox:checked p {
-    color: #000000;
-    opacity: 100%;
-}
-
 .button-container {
     margin-left: 15%;
 }
@@ -116,8 +76,8 @@ select.custom-select:focus {
     margin-top: 8ch;
     width: 305px;
     height: 50px;
-    background-color: #5970FF;
-    color: #FFFFFF;
+    background-color: var(--additional-blue-color);
+    color: var(--white);
     border: none;
     padding: 10px;
     font-size: 16px;
@@ -129,18 +89,4 @@ select.custom-select:focus {
 .button:disabled {
     opacity: 50%;
     cursor: not-allowed;
-}
-
-.error-message {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16.94px;
-    color: red;
-    margin-bottom: 10px;
-    text-align: center;
-    visibility: hidden;
-}
-
-.input .error-message {
-    visibility: visible;
 }

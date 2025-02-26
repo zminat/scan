@@ -3,7 +3,7 @@ import SearchImg from "../assets/img/Main/Group19.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import WhyUsImg from "../assets/img/Main/Group14.svg";
-import Rates from "../pages/Rates.tsx";
+import Rates from "../components/Rates.tsx";
 import Carousel from "../components/Carousel.tsx"
 import {useNavigate} from "react-router-dom";
 
