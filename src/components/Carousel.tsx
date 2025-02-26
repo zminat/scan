@@ -78,7 +78,8 @@ const Carousel: React.FC = () => {
     ];
 
     return (
-        <div className="carousel">
+        <div className="main-container">
+            <h1>Почему именно мы</h1>
             <Slider {...settings}>
                 {cards.map((card, index) => (
                     <CarouselCard key={index} {...card} />

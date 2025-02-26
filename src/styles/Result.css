@@ -13,3 +13,17 @@ h2 {
     line-height: 36px;
     letter-spacing: 0.02em;
 }
+
+.request-btn {
+    width: 335px;
+    height: 59px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #5970FF;
+    border: none;
+    color: white;
+    font-family: "Inter", serif;
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+}

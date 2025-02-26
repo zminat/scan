@@ -63,8 +63,8 @@ const Rates: React.FC = () => {
     };
 
     return (
-        <div className="app">
-            <h2>Наши тарифы</h2>
+        <div className="main-container">
+            <h1>Наши тарифы</h1>
             <div className="rate-container">
                 {rates.map((rate) => (
                     <RateCard

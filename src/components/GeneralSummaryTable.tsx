@@ -117,7 +117,7 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
                                             <div className="data-cell">{item.total}</div>
                                             <div className="data-cell">{item.risks}</div>
                                         </div>
-                                        {index < combinedData.length - 1 && <div className="divider"></div>}
+                                        {index < combinedData.length - 1 && <div className="table-divider"></div>}
                                     </React.Fragment>
                                 ))}
                             </div>

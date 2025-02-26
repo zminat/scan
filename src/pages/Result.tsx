@@ -181,7 +181,7 @@ function Results() {
             {!isLoading && !isError && documentsData.map((doc) => (
                 <PublicationCard key={doc.id} {...doc} />
             ))}
-            {!isAllDataLoaded && <button onClick={loadMoreDocuments}>Показать больше</button>}
+            {!isAllDataLoaded && <button className="request-btn" onClick={loadMoreDocuments}>Показать больше</button>}
         </div>
     );
 }

@@ -1,6 +1,6 @@
 footer {
     position: relative;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     width: 100%;
     background-color: var(--main-color);
     color: var(--white);

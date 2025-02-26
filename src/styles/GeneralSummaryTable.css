@@ -59,7 +59,7 @@
     padding: 17.5px;
 }
 
-.divider {
+.table-divider {
     height: 124px;
     width: 2px;
     background-color: var(--grey);

@@ -24,7 +24,6 @@ function Main() {
                     <img src={SearchImg} alt="сервис по поиску публикаций о компании по его ИНН" />
                 </div>
             </div>
-            <h2>Почему именно мы</h2>
             <Carousel />
             <div className="why-us">
                 <img src={WhyUsImg} alt="Почему именно мы" />
