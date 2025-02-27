@@ -88,24 +88,24 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
     };
 
     return (
-        <div className="general-summary-block">
-            <h2 className="h2-search-results-page">Общая сводка</h2>
-            <p className="p-general-summary-title-block">Найдено данных: {totalDataCount}</p>
+        <div className="main-container">
+            <h1 className="results-title">Общая сводка</h1>
+            <p className="data-count">Найдено данных: {totalDataCount}</p>
             <div className="table-and-arrows-container">
                 <button className="scroll-btn left" onClick={() => scrollTable('left')}></button>
                 <div className="table-wrapper-main">
                     <div className="table-headers">
-                        <div className="header-period">Период</div>
-                        <div className="header-total">Всего</div>
-                        <div className="header-risks">Риски</div>
+                        <div className="header-title">Период</div>
+                        <div className="header-title">Всего</div>
+                        <div className="header-title">Риски</div>
                     </div>
                     <div className="table-wrapper" ref={tableWrapperRef}>
                         {isLoading ? (
-                            <div className="table-data-loading">
+                            <div className="table-data">
                                 <span className="loader"></span>
                             </div>
                         ) : isError ? (
-                            <div className="table-data-error">
+                            <div className="table-data">
                                 <p className="error-500-message">Ошибка сервера. Попробуйте чуть позже или проверьте свой тариф.</p>
                             </div>
                         ) : (

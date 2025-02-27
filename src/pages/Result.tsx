@@ -169,19 +169,24 @@ function Results() {
             <div className="search">
                 <div className="container">
                     <h1>Ищем. Скоро будут результаты</h1>
-                    <p>Поиск может занять некоторое время, просим сохранять терпение.</p>
+                    <p className="title-context">Поиск может занять некоторое время, просим сохранять терпение.</p>
                 </div>
                 <img src={SearchingWomanImg} alt="Ожидание выдачи результатов" />
             </div>
-            <h2>Общая сводка</h2>
-            {!isLoading && !isError && searchData && (
                 <GeneralSummaryTable searchData={searchData} isLoading={isLoading} isError={isError} />
-            )}
-            <h2>Список документов</h2>
-            {!isLoading && !isError && documentsData.map((doc) => (
-                <PublicationCard key={doc.id} {...doc} />
-            ))}
-            {!isAllDataLoaded && <button className="request-btn" onClick={loadMoreDocuments}>Показать больше</button>}
+            <div className="main-container">
+                <h1 className="results-title">Список документов</h1>
+                {!isLoading && !isError && documentsData.map((doc) => (
+                    <PublicationCard key={doc.id} {...doc} />
+                ))}
+                { isLoading && (
+                    <p>Поиск может занять некоторое время, просим сохранять терпение.</p>
+                )}
+                { isError && (
+                    <p className="error-500-message">Ошибка сервера. Попробуйте чуть позже или проверьте свой тариф.</p>
+                )}
+                {!isAllDataLoaded && <button className="request-btn" onClick={loadMoreDocuments}>Показать больше</button>}
+            </div>
         </div>
     );
 }

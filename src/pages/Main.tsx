@@ -17,10 +17,10 @@ function Main() {
                     <div className="title-container">
                         <h1>сервис по поиску<br/>публикаций<br/>о компании<br/>по его ИНН</h1>
                     </div>
-                    <p>Комплексный анализ публикаций, получение данных<br/>в формате PDF на электронную почту.</p>
+                    <p className="title-context">Комплексный анализ публикаций, получение данных<br/>в формате PDF на электронную почту.</p>
                     <button className="request-btn" onClick={() => navigate("/search")}>Запросить данные</button>
                 </div>
-                <div>
+                <div className="search-img">
                     <img src={SearchImg} alt="сервис по поиску публикаций о компании по его ИНН" />
                 </div>
             </div>

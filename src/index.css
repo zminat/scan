@@ -21,6 +21,7 @@
 
 .main-content {
   min-height: calc(100vh - 141px - 80px);
+  margin-bottom: 109px;
 }
 
 .input-error p {
@@ -107,5 +108,11 @@ h1 {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em,
     3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
     -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+@media(max-width: 320px){
+  .main-content {
+    min-height: calc(100vh - 141px - 80px);
   }
 }

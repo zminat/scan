@@ -10,7 +10,7 @@
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 .search h1 {
@@ -53,12 +53,13 @@
 
 .search .search-img {
     position: relative;
+    transform: translateY(-27px)
 }
 
-/*.search .search-img img {*/
-/*    max-width: 100%;*/
-/*    height: auto;*/
-/*}*/
+.search-img {
+    max-width: 100%;
+    height: auto;
+}
 
 .why-us {
     margin-top: 50px;

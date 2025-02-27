@@ -87,6 +87,17 @@ const SearchForm: React.FC = () => {
         }
     };
 
+
+    const handleFocus = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.target.type = 'date';
+    };
+
+    const handleBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (!event.target.value) {
+            event.target.type = 'text';
+        }
+    };
+
     return (
         <form className="formContainer" onSubmit={handleSearch}>
             <div className="inputsContainer">
@@ -133,12 +144,18 @@ const SearchForm: React.FC = () => {
                             className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
+                            placeholder="Дата начала"
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
                         />
                         <input
                             type="date"
                             className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
+                            placeholder="Дата конца"
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
                         />
                     </div>
                     {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}

@@ -11,8 +11,10 @@ function Search() {
             <div className="search">
                 <div className="title-container">
                     <h1>Найдите необходимые данные в пару кликов.</h1>
-                    <p className="title-context">Задайте параметры поиска. <br/>
-                        Чем больше заполните, тем точнее поиск</p>
+                    <div className="title-context">
+                        <p>Задайте параметры поиска. <br/>
+                            Чем больше заполните, тем точнее поиск.</p>
+                    </div>
                     <SearchForm />
                 </div>
                 <div className="search-images">
