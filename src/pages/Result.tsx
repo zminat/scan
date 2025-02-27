@@ -61,6 +61,73 @@ function Results() {
             setIsError(false);
 
             try {
+                // const testSearchParams = {
+                //     "intervalType": "day",
+                //     "histogramTypes": [
+                //         "totalDocuments"
+                //     ],
+                //     "issueDateInterval": {
+                //         "startDate": "2018-02-09T08:24:17.264Z",
+                //         "endDate": "2025-02-09T08:24:17.264Z"
+                //     },
+                //     "searchContext": {
+                //         "targetSearchEntitiesContext": {
+                //             "targetSearchEntities": [
+                //                 {
+                //                     "type": "company",
+                //                     "sparkId": null,
+                //                     "entityId": null,
+                //                     "inn": 7710137066,
+                //                     "maxFullness": true,
+                //                     "inBusinessNews": null
+                //                 }
+                //             ],
+                //             "onlyMainRole": true,
+                //             "tonality": "any",
+                //             "onlyWithRiskFactors": false, // Установите на false, если не хотите фильтровать по рисковым факторам
+                //             "riskFactors": { // Убедитесь, что это поле пустое, если onlyWithRiskFactors: false
+                //                 "and": [],
+                //                 "or": [],
+                //                 "not": []
+                //             },
+                //             "themes": {
+                //                 "and": [],
+                //                 "or": [],
+                //                 "not": []
+                //             }
+                //         },
+                //         "themesFilter": {
+                //             "and": [],
+                //             "or": [],
+                //             "not": []
+                //         }
+                //     },
+                //     "searchArea": {
+                //         "includedSources": [
+                //             0 // Или уберите, если не нужно
+                //         ],
+                //         "excludedSources": [
+                //             0 // Или уберите, если не нужно
+                //         ],
+                //         "includedSourceGroups": [
+                //             0 // Или уберите, если не нужно
+                //         ],
+                //         "excludedSourceGroups": [
+                //             0 // Или уберите, если не нужно
+                //         ],
+                //         "includedDistributionMethods": [
+                //             0 // Убедитесь, что используете только один из фильтров
+                //         ],
+                //         "excludedDistributionMethods": [] // Оставьте пустым или уберите
+                //     },
+                //     "attributeFilters": {
+                //         "excludeTechNews": true,
+                //         "excludeAnnouncements": true,
+                //         "excludeDigests": true
+                //     },
+                //     "similarMode": "duplicates"
+                // }
+
                 const histogramResponse = await fetch(HISTOGRAMS, {
                     method: 'POST',
                     headers: {
