@@ -149,3 +149,11 @@
     color: #000000;
     background: #999999;
 }
+
+@media (max-width: 1000px) {
+    .rate-container {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+}

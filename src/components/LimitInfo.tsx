@@ -40,7 +40,11 @@ const LimitInfo: React.FC = () => {
     }
 
     if (!accountInfo) {
-        return <p>Не удалось загрузить данные о лимитах</p>;
+        return (
+            <div className="limit-info">
+                <p>Не удалось загрузить данные о лимитах</p>;
+            </div>
+        )
     }
 
     return (

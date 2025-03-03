@@ -1,46 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import '../styles/Carousel.css';
+import "../styles/Carousel.css";
 import ClockImg from "../assets/img/Main/WhyUs/icons8-время-64.svg";
 import GlassImg from "../assets/img/Main/WhyUs/icons8-расширенный-поиск-100.svg";
 import ShieldImg from "../assets/img/Main/WhyUs/icons8-накладка дверного-замка-64.svg";
 import LeftArrow from "../assets/img/Main/icons8-шеврон-вправо-90 1.svg";
 import RightArrow from "../assets/img/Main/icons8-шеврон-вправо-90 2.svg";
 
+type ArrowProps = {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: () => void;
+};
 
-const CustomPrevArrow = (props: any) => {
-    const { className, style, onClick } = props;
+const CustomPrevArrow: React.FC<ArrowProps> = ({ className, style, onClick }) => {
     return (
         <img
             src={LeftArrow}
             alt="prev"
             className={className}
-            style={{ ...style, display: "block", width: "40px", height: "40px", left: "-50px" }}
+            style={{ ...style, display: "block", width: "40px", height: "40px", zIndex: 2 }}
             onClick={onClick}
         />
     );
 };
 
-const CustomNextArrow = (props: any) => {
-    const { className, style, onClick } = props;
+const CustomNextArrow: React.FC<ArrowProps> = ({ className, style, onClick }) => {
     return (
         <img
             src={RightArrow}
             alt="next"
             className={className}
-            style={{ ...style, display: "block", width: "40px", height: "40px", right: "-50px" }}
+            style={{ ...style, display: "block", width: "40px", height: "40px", zIndex: 2 }}
             onClick={onClick}
         />
     );
 };
 
-interface CarouselCardProps {
+type CarouselCardProps = {
     title: string;
     imageSrc: string;
     text: string;
-}
+};
 
 const CarouselCard: React.FC<CarouselCardProps> = ({ title, imageSrc, text }) => {
     return (
@@ -54,37 +57,54 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ title, imageSrc, text }) =>
 };
 
 const Carousel: React.FC = () => {
+    const [slidesToShow, setSlidesToShow] = useState<number>(3);
+
+    useEffect(() => {
+        const updateSlidesToShow = () => {
+            if (window.innerWidth <= 850) {
+                setSlidesToShow(1);
+            } else if (window.innerWidth <= 1250) {
+                setSlidesToShow(2);
+            } else {
+                setSlidesToShow(3);
+            }
+        };
+
+        updateSlidesToShow(); // Вызываем сразу, чтобы обновить значение при монтировании
+        window.addEventListener("resize", updateSlidesToShow);
+
+        return () => window.removeEventListener("resize", updateSlidesToShow);
+    }, []);
+
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: slidesToShow, // Обновляемое состояние
         slidesToScroll: 1,
         arrows: true,
         centerMode: false,
-        centerPadding: "20px",
+        centerPadding: "2px",
         prevArrow: <CustomPrevArrow />,
         nextArrow: <CustomNextArrow />,
-        useCSS: true,
-        transform: "translate3d(0px, 0px, 0px)",
     };
 
     const cards = [
-        { title: 'Clock', imageSrc: ClockImg, text: 'Высокая и оперативная скорость обработки заявки' },
-        { title: 'Glass', imageSrc: GlassImg, text: 'Огромная комплексная база данных, обеспечивающая объективный ответ на запрос' },
-        { title: 'Shield', imageSrc: ShieldImg, text: 'Защита конфеденциальных сведений, не подлежащих разглашению по федеральному законодательству' },
-        // { title: 'Clock', imageSrc: ClockImg, text: 'Высокая скорость обработки' },
-
+        { title: "Clock", imageSrc: ClockImg, text: "Высокая и оперативная скорость обработки заявки" },
+        { title: "Glass", imageSrc: GlassImg, text: "Огромная комплексная база данных, обеспечивающая объективный ответ на запрос" },
+        { title: "Shield", imageSrc: ShieldImg, text: "Защита конфиденциальных сведений, не подлежащих разглашению по федеральному законодательству" },
     ];
 
     return (
         <div className="main-container">
             <h1>Почему именно мы</h1>
-            <Slider {...settings}>
-                {cards.map((card, index) => (
-                    <CarouselCard key={index} {...card} />
-                ))}
-            </Slider>
+            <div className="carousel-wrapper">
+                <Slider key={slidesToShow} {...settings}>
+                    {cards.map((card, index) => (
+                        <CarouselCard key={index} {...card} />
+                    ))}
+                </Slider>
+            </div>
         </div>
     );
 };

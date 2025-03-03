@@ -8,9 +8,10 @@
     position: relative;
     max-width: 1440px;
     display: flex;
-    margin: 0 auto;
+    margin: 0 2%;
     justify-content: space-between;
     align-items: start;
+    top: 109px;
 }
 
 .search h1 {
@@ -62,8 +63,46 @@
 }
 
 .why-us {
-    margin-top: 50px;
+    margin: 2% 50px 2% 0px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 1000px) {
+    .search {
+        display: block;
+    }
+
+    .search .search-img {
+        align-self: center;
+        transform: translateY(0px)
+    }
+
+    .why-us {
+        justify-content: flex-start;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .search .request-btn {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .title-context {
+        max-width: 100%;
+    }
+
+    .search h1 {
+        font-size: 28px;
+        line-height: 33.6px;
+    }
 }
