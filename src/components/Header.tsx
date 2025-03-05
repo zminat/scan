@@ -19,15 +19,16 @@ function Header() {
 
     const styles = {
         bmBurgerButton: {
-            display: 'none' // Скрываем встроенную кнопку бургера
+            display: 'none'
             },
         bmItem: {
             display: 'inline-block'
         },
-        bmOverlay: {
+        bmMenuWrap: {
             background: 'var(--main-color)',
             margin: '0 auto',
-            top: '0'
+            top: '0',
+            width: '100%'
         }
     }
 
