@@ -4,8 +4,11 @@ import '../styles/Rates.css';
 import Beginner from "../assets/img/Rates/beginner-icon.svg";
 import Pro from "../assets/img/Rates/pro-icon.svg";
 import Business from "../assets/img/Rates/business-icon.svg";
+import { useAuth } from "./AuthContext.tsx";
 
 const Rates: React.FC = () => {
+    const { isLoggedIn } = useAuth();
+
     const rates = [
         {
             id: 1,
@@ -16,7 +19,7 @@ const Rates: React.FC = () => {
             oldPrice: '1 200 ₽',
             installments: 'или 150 ₽/мес. при рассрочке на 24 мес.',
             details: ['Безлимитная история запросов', 'Безопасная сделка', 'Поддержка 24/7'],
-            isCurrent: true,
+            isCurrent: isLoggedIn,
             backgroundColor: '#FFB64F',
             color: '#000000',
         },
