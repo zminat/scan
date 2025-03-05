@@ -17,7 +17,7 @@ function Main() {
             <div className="search">
                 <div className="container">
                     <div className="title-container">
-                        <h1>сервис по поиску<br/>публикаций<br/>о компании<br/>по его ИНН</h1>
+                        <h1>сервис по поиску публикаций о{'\u00A0'}компании по{'\u00A0'}его ИНН</h1>
                     </div>
                     <p className="title-context">Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.</p>
                     <button
