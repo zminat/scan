@@ -20,7 +20,7 @@ const Rates: React.FC = () => {
             installments: 'или 150 ₽/мес. при рассрочке на 24 мес.',
             details: ['Безлимитная история запросов', 'Безопасная сделка', 'Поддержка 24/7'],
             isCurrent: isLoggedIn,
-            backgroundColor: '#FFB64F',
+            backgroundColor: 'var(--additional-yellow-color)',
             color: '#000000',
         },
         {
@@ -37,7 +37,7 @@ const Rates: React.FC = () => {
                 'Рекомендации по приоритетам',
             ],
             isCurrent: false,
-            backgroundColor: '#7CE3E1',
+            backgroundColor: 'var(--additional-turquoise-color)',
             color: '#000000',
         },
         {
@@ -54,7 +54,7 @@ const Rates: React.FC = () => {
                 'Приоритетная поддержка',
             ],
             isCurrent: false,
-            backgroundColor: '#000000',
+            backgroundColor: 'var(--black)',
             color: '#FFFFFF',
         },
     ];
