@@ -43,7 +43,7 @@ function LoginPage() {
         return (
         <div className="login-page">
             <div className="container">
-                <h1>Для оформления подписки <br />на тариф, необходимо <br />авторизоваться.</h1>
+                <h1>Для оформления подписки на{'\u00A0'}тариф, необходимо авторизоваться.</h1>
                 <img src={CharactersImg} alt="Для оформления подписки на тариф, необходимо авторизоваться" />
             </div>
             <div className="login-form-container">
@@ -106,7 +106,9 @@ function LoginPage() {
                     </div>
                 </div>
             </div>
-
+            <div className="img-container">
+                <img src={CharactersImg} alt="Для оформления подписки на тариф, необходимо авторизоваться" />
+            </div>
         </div>
     );
 }

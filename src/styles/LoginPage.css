@@ -8,14 +8,12 @@
     top: 65px;
 }
 
-.container img {
-    margin-left: 12%;
-    transform: translateY(-60px);
-}
-
 .login-form-container {
     width: 480px;
     height: 578px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .login-form {
@@ -32,6 +30,7 @@
 }
 
 .lock-icon {
+    z-index: 2;
     width: 75.22px;
     height: 92.06px;
 }
@@ -84,7 +83,7 @@
 }
 
 .tab {
-    padding: 10px;
+    /*padding: 10px;*/
     text-align: center;
     color: #C7C7C7;
     text-decoration-line: none;
@@ -175,4 +174,89 @@
     border: 1px solid var(--additional-blue-color);
     cursor: pointer;
     background-color: white;
+}
+
+.img-container {
+    display: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .login-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container img {
+        display: none;
+    }
+
+    .login-form-container {
+        justify-content: center;
+        margin-bottom: 100px;
+        width: 335px;
+    }
+
+    .lock-icon {
+        margin-left: -25px;
+    }
+
+    .login-form {
+        width: 335px;
+        height: 460px;
+        margin-top: -15px;
+    }
+
+    .login-btn {
+        width: 103px;
+        height: 27px;
+        top: 214px;
+    }
+
+    .register-btn {
+        font-size: 16px;
+        width: 182px;
+        height: 27px;
+        top: 214px;
+        border: none;
+        background-color: #FFFFFF;
+        color: #C7C7C7;
+        cursor: pointer;
+    }
+
+    .login-btn, .register-btn {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        letter-spacing: 0.02em;
+
+    }
+
+    .login-page label {
+        font-size: 14px;
+        margin: 15px;
+        font-weight: 400;
+        line-height: 17px;
+        letter-spacing: 0.02em;
+    }
+
+    .login-page input {
+        font-size: 14px;
+        width: 305px;
+        height: 43px;
+        margin-bottom: 5px;
+    }
+
+    .submit-button {
+        margin: 15px 15px 0;
+        width: 305px;
+    }
+
+    .social-login {
+        margin: 25px 15px;
+    }
+
+    .img-container {
+        display: block;
+    }
 }
