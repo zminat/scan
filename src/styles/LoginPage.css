@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 523px;
     font-family: "Inter", sans-serif;
+    top: 55px;
 }
 
 /*.container h1 {*/
