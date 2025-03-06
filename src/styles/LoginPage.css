@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     font-family: "Inter", sans-serif;
-    top: 55px;
+    top: 65px;
 }
 
 .container img {
@@ -23,11 +23,12 @@
     height: 523px;
     top: 162px;
     left: 870px;
-    margin-top: -60px;
+    margin-top: -45px;
     margin-left: 45px;
     gap: 0;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 #00000026;
+    padding: 25px 0;
 }
 
 .lock-icon {
@@ -38,14 +39,14 @@
 .form-tabs {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 .login-btn {
+    font-size: 16px;
     width: 151px;
-    height: 29px;
+    height: 27px;
     top: 214px;
     border: none;
     background-color: #FFFFFF;
@@ -54,8 +55,9 @@
 }
 
 .register-btn {
+    font-size: 16px;
     width: 213px;
-    height: 29px;
+    height: 27px;
     top: 214px;
     border: none;
     background-color: #FFFFFF;
@@ -84,13 +86,13 @@
 .login-page label {
     display: block;
     margin: 25px;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--grey);
 }
 
 .login-page input {
     margin-top: 15px;
-    font-size: 14px;
+    font-size: 16px;
     width: 379px;
     height: 43px;
     top: 290px;
@@ -101,7 +103,7 @@
 }
 
 .submit-button {
-    margin: 25px;
+    margin: 5px 25px;
     background-color: var(--additional-blue-color);
     color: var(--white);
     width: 379px;
@@ -121,8 +123,8 @@
 }
 
 .forgot-password {
+    margin: 10px;
     display: block;
-    margin: 10px 0;
     text-align: center;
     font-size: 14px;
     font-weight: 400;
@@ -134,7 +136,7 @@
 }
 
 .social-login {
-    margin-left: 25px;
+    margin: 25px;
     font-size: 16px;
     font-weight: 400;
     line-height: 19.36px;
@@ -146,7 +148,7 @@
 .social-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
+    margin-top: 15px;
     width: 308px;
     height: 65px;
 }
@@ -158,4 +160,5 @@
     border-radius: 3px;
     border: 1px solid #5970FF82;
     cursor: pointer;
+    background-color: var(--white);
 }
