@@ -1,12 +1,14 @@
 .formContainer {
-    width: 872px;
-    height: 543px;
+    width: 812px;
+    height: 513px;
     background: #FFFFFF;
     padding: 30px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 0 92px;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px #00000033;
-    min-width: 730px;
+    box-shadow: 0 0 20px 0 #00000033;
+    min-width: 375px;
     margin-bottom: 80px;
 }
 
@@ -18,13 +20,13 @@
 }
 
 .inputContainer {
-    width: 60%;
+    width: 100%;
 }
 
 .label {
     display: block;
-    margin: 10px;
-    font-size: 14px;
+    margin: 10px 0;
+    font-size: 18px;
     color: var(--grey);
 }
 
@@ -51,7 +53,7 @@ select.custom-select {
     -webkit-appearance: none; /* Стиль для Safari */
     -moz-appearance: none;    /* Стиль для Firefox */
     appearance: none;         /* Стиль для прочих браузеров */
-    width: 65%;
+    width: 100%;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -69,19 +71,15 @@ select.custom-select:focus {
     gap: 10px;
 }
 
-.button-container {
-    margin-left: 15%;
-}
-
 .button {
-    margin-top: 8ch;
+    margin-top: 40px;
     width: 305px;
     height: 50px;
     background-color: var(--additional-blue-color);
     color: var(--white);
     border: none;
     padding: 10px;
-    font-size: 16px;
+    font-size: 22px;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
@@ -90,4 +88,54 @@ select.custom-select:focus {
 .button:disabled {
     opacity: 50%;
     cursor: not-allowed;
+}
+
+
+@media screen and (max-width: 1360px) {
+    .formContainer {
+        width: 375px;
+        height: auto;
+        display: block;
+        min-width: 375px;
+        padding: 14px;
+    }
+
+    .inputsContainer {
+        padding: 15px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .inputContainer {
+        width: 88%;
+    }
+
+    .label {
+        text-align: start;
+    }
+
+    select.custom-select {
+        width: 95%;
+    }
+
+    .dateInput {
+        width: 88%;
+        margin-top: 20px;
+    }
+
+    .button-container {
+        margin-left: 0;
+    }
+
+    .button-container p {
+        margin-bottom: 20px;
+    }
+
+    .button {
+        font-size: 20px;
+        width: 100%;
+    }
 }

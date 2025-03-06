@@ -136,39 +136,39 @@ const SearchForm: React.FC = () => {
                     {touchedDocCount && !isDocCountValid && <p className="error-message">Введите число от 1 до 1000</p>}
                 </div>
 
-                <div>
-                    <label className="label">Диапазон поиска *</label>
-                    <div className="dateRange">
-                        <input
-                            type="date"
-                            className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
-                            value={startDate}
-                            onChange={(e) => setStartDate(e.target.value)}
-                            placeholder="Дата начала"
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                        />
-                        <input
-                            type="date"
-                            className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
-                            value={endDate}
-                            onChange={(e) => setEndDate(e.target.value)}
-                            placeholder="Дата конца"
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
-                        />
-                    </div>
-                    {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}
-                </div>
             </div>
             <div className="checkboxGroup">
                 <Checkboxes checkboxStates={checkboxStates} handleCheckboxChange={handleCheckboxChange}/>
-                <div className="button-container">
-                    <button className="button" type="submit" disabled={!isFormValid}>
-                        Поиск
-                    </button>
-                    <p className="note">* Обязательные к заполнению поля</p>
+            </div>
+            <div>
+                <label className="label">Диапазон поиска *</label>
+                <div className="dateRange">
+                    <input
+                        type="date"
+                        className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        placeholder="Дата начала"
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                    />
+                    <input
+                        type="date"
+                        className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        placeholder="Дата конца"
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                    />
                 </div>
+                {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}
+            </div>
+            <div className="button-container">
+                <button className="button" type="submit" disabled={!isFormValid}>
+                    Поиск
+                </button>
+                <p className="note">* Обязательные к заполнению поля</p>
             </div>
         </form>
     );
