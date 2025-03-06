@@ -2,23 +2,15 @@
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: "Inter", sans-serif;
     top: 55px;
 }
 
-/*.container h1 {*/
-/*    font-size: 40px;*/
-/*    font-weight: 900;*/
-/*    line-height: 48px;*/
-/*    letter-spacing: 0.02em;*/
-/*    text-align: left;*/
-/*    text-underline-position: from-font;*/
-/*}*/
-
 .container img {
     margin-left: 12%;
+    transform: translateY(-60px);
 }
 
 .login-form-container {
@@ -31,11 +23,11 @@
     height: 523px;
     top: 162px;
     left: 870px;
-    margin-top: -40px;
+    margin-top: -60px;
     margin-left: 45px;
-    gap: 0px;
+    gap: 0;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px #00000026;
+    box-shadow: 0 0 20px 0 #00000026;
 }
 
 .lock-icon {
@@ -105,7 +97,7 @@
     left: 895px;
     border-radius: 5px;
     border: 1px solid #C7C7C7;
-    box-shadow: 0px 0px 20px 0px #0000000D;
+    box-shadow: 0 0 20px 0 #0000000D;
 }
 
 .submit-button {
