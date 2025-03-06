@@ -15,6 +15,7 @@ function LoginPage() {
     const { setIsLoggedIn } = useAuth();
     const navigate = useNavigate();
     const [errorMessage] = useState("");
+    const [activeTab, setActiveTab] = useState('login'); // 'login' или 'register'
 
     const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -50,14 +51,25 @@ function LoginPage() {
                 <div className="login-form">
 
                     <div className="form-tabs">
-                        <button className="login-btn">
-                            Войти
-                            <div className="tab-line" />
-                        </button>
-                        <button className="register-btn">
-                            Зарегистрироваться
-                            <div className="tab-line" />
-                        </button>
+                        <div className="tab">
+                            <button
+                                className={`login-btn ${activeTab === 'login' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('login')}
+                            >
+                                Войти
+                            </button>
+                            <div className={`tab-line ${activeTab === 'login' ? 'active' : ''}`} />
+                        </div>
+
+                        <div className="tab">
+                            <button
+                                className={`register-btn ${activeTab === 'register' ? 'active' : ''}`}
+                                onClick={() => setActiveTab('register')}
+                            >
+                                Зарегистрироваться
+                            </button>
+                            <div className={`tab-line ${activeTab === 'register' ? 'active' : ''}`} />
+                        </div>
                     </div>
                     <form onSubmit={handleLogin}>
                         <label>

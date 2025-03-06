@@ -50,8 +50,12 @@
     top: 214px;
     border: none;
     background-color: #FFFFFF;
-    color: #029491;
+    color: #C7C7C7;
     cursor: pointer;
+}
+
+.login-btn.active {
+    color: var(--main-color);
 }
 
 .register-btn {
@@ -65,10 +69,18 @@
     cursor: pointer;
 }
 
+.register-btn.active {
+    color: var(--main-color);
+}
+
 .tab-line {
     margin-top: 8px;
     height: 2px;
     background-color: #C7C7C7;
+}
+
+.tab-line.active {
+    background-color: var(--main-color);
 }
 
 .tab {
@@ -154,11 +166,13 @@
 }
 
 .social-buttons button {
-    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 96px;
     height: 31px;
     border-radius: 3px;
-    border: 1px solid #5970FF82;
+    border: 1px solid var(--additional-blue-color);
     cursor: pointer;
-    background-color: var(--white);
+    background-color: white;
 }
