@@ -15,13 +15,13 @@ function Search() {
                         <p>Задайте параметры поиска. <br/>
                             Чем больше заполните, тем точнее поиск.</p>
                     </div>
-                    <SearchForm />
                 </div>
-                <div className="search-images">
-                    <div className="documents">
-                        <img className="document" src={DocumentImg} alt="Документ" />
-                        <img className="folders" src={FoldersImg} alt="Папки" />
-                    </div>
+                <div className="documents">
+                    <img className="document" src={DocumentImg} alt="Документ" />
+                    <img className="folders" src={FoldersImg} alt="Папки" />
+                </div>
+                <SearchForm />
+                <div className="search-image">
                     <img className="searching-man" src={SearchingManImg} alt="Мужчина с лупой" />
                 </div>
             </div>

@@ -21,7 +21,7 @@
 
 .main-content {
   min-height: calc(100vh - 141px - 80px);
-  min-width: 580px;
+  min-width: 375px;
   margin: auto 5% 109px 5%;
 }
 
