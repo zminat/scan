@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
-import '../styles/PublicationCard.css';
-
-interface PublicationCardProps {
-    content: string;
-    date: string;
-    url: string;
-    sourceName: string;
-    title: string;
-    picture: string;
-    wordCount: number;
-    isTechNews?: boolean;
-    isAnnouncement?: boolean;
-}
+import { useEffect, useState} from "react";
+import "../styles/PublicationCard.css";
+import { DocumentAPI } from "./DocumentAPI.types.ts";
+import PICTURE from "../assets/img/Result/publication.png"
 
 function decodeHtml(html: string): string {
     const txt = document.createElement("textarea");
@@ -24,28 +14,36 @@ function cleanHtmlContent(htmlContent: string): string {
     return decodedHtml.replace(/(<([^>]+)>)/gi, "");
 }
 
-const PublicationCard: React.FC<PublicationCardProps> = (props) => {
-    const [cleanContent, setCleanContent] = useState<string>('');
+const PublicationCard = (props: DocumentAPI) => {
+    const [cleanContent, setCleanContent] = useState<string>("");
 
     useEffect(() => {
-        setCleanContent(cleanHtmlContent(props.content));
-    }, [props.content]);
+        setCleanContent(cleanHtmlContent(props.ok.content.markup)); // Используем правильную функцию
+    }, [props.ok.content.markup]);
 
-    const tagLabel = props.isTechNews ? "Технические новости" : props.isAnnouncement ? "Анонсы и события" : "Сводки новостей";
+    const tagLabel = props.ok.attributes.isTechNews
+        ? "Технические новости"
+        : props.ok.attributes.isAnnouncement
+            ? "Анонсы и события"
+            : "Сводки новостей";
 
     return (
         <div className="publication-card">
             <div className="publication-info">
-                <span className="publication-date">{props.date}</span>
-                <a href={props.url} className="publication-source" target="_blank" rel="noopener noreferrer">{props.sourceName}</a>
+                <span className="publication-date">{props.ok.issueDate}</span>
+                <a href={props.ok.url} className="publication-source" target="_blank" rel="noopener noreferrer">
+                    {props.ok.source.name}
+                </a>
             </div>
-            <h3 className="publication-title">{props.title}</h3>
+            <h3 className="publication-title">{props.ok.title.text}</h3>
             <div className="tag">{tagLabel}</div>
-            <img src={props.picture} alt="Publication" className="publication-picture" />
+            <img src={ PICTURE } alt="Publication" className="publication-picture" />
             <p className="publication-content">{cleanContent}</p>
             <div className="publication-footer">
-                <a href={props.url} className="button read-more" target="_blank" rel="noopener noreferrer">Читать в источнике</a>
-                <span className="word-count">{props.wordCount} слова</span>
+                <a href={props.ok.url} className="button read-more" target="_blank" rel="noopener noreferrer">
+                    Читать в источнике
+                </a>
+                <span className="word-count">{props.ok.attributes.wordCount} слова</span>
             </div>
         </div>
     );

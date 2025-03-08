@@ -141,7 +141,7 @@
         color: white;
         height: 75px;
         width: 298px;
-        margin-left: -2px;
+        margin-left: 0;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 0;
     }
@@ -156,6 +156,7 @@
 
     .table-data {
         display: flex;
+        height: 65px;
     }
 
     .data-row {
@@ -194,5 +195,13 @@
         text-align: center;
         margin-left: 10px;
         margin-right: 10px;
+    }
+
+    .data-cell, .header-title {
+        padding: 0;
+    }
+
+    .table-headers > div, .data-row > div {
+        padding: 0;
     }
 }
