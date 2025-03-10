@@ -125,7 +125,7 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     opacity: 40%;
-    padding: 0px;
+    padding: 0;
 }
 
 .avatar img {
@@ -137,7 +137,7 @@
     font-family: Inter, sans-serif;
     font-size: 10px;
     font-weight: 400;
-    line-height: 12.1px;
+    line-height: 12px;
     text-decoration: none;
     color: black;
     text-align: right;
@@ -175,7 +175,7 @@
 .limit-quantity {
     font-size: 14px;
     font-weight: 700;
-    line-height: 16.94px;
+    line-height: 17px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
@@ -184,29 +184,34 @@
 .limit-quantity-green {
     font-size: 14px;
     font-weight: 700;
-    line-height: 16.94px;
+    line-height: 17px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #8AC540;
 }
 
+
 .menu-nav {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    cursor: pointer;
-    gap: 49px;
-    /*flex-grow: 1;*/
+    gap: 30px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.01em;
+
 }
 
 .burger-bar {
-    align-items: center;
-    width: 30px;
-    /*height: 4px;*/
-    margin: 5px 0;
-    transition: 0.4s;
-    color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+.burger-bar:hover {
+    color: lightgray;
 }
 
 .burger-container {
@@ -214,36 +219,32 @@
     flex-direction: column;
     cursor: pointer;
     margin: auto;
-    margin-right: 100%;
 }
 
 .hamburger {
-    /*top:50%;*/
-    /*left:10%;*/
     top: 16px;
-    width: 50px;
-    height: 6px;
+    width: 30px;
+    height: 4px;
     background: var(--main-color);
     color: #029491;
     position: absolute;
-    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
     transition: 0.5s;
 }
 
 .hamburger:before {
-    top: -16px;
+    top: -10px;
 }
 
 .hamburger:after {
-    top: 16px;
+    top: 10px;
 }
 
 .icon {
     position: absolute;
-    top: 30%;
-    left: 85%;
-    width: 50px;
-    height: 50px;
+    top: 30px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -251,8 +252,8 @@
 .hamburger:after {
     content: '';
     position: absolute;
-    width: 50px;
-    height: 6px;
+    width: 30px;
+    height: 4px;
     background: var(--main-color);
     transition: 0.5s;
 }
@@ -266,7 +267,7 @@
     transform: rotate(135deg);
     background: var(--white);
     position: fixed;
-    z-index: 9999;
+    z-index: 2000;
     right: auto;
 }
 
@@ -275,11 +276,10 @@
     transform: rotate(225deg);
     background: var(--white);
     position: fixed;
-    z-index: 9999;
+    z-index: 2000;
     right: auto;
 }
 
-/* Навигация для десктопа */
 .header-nav {
     display: flex;
     justify-content: center;
@@ -288,34 +288,17 @@
 }
 
 .menu-page {
-    position: fixed;
-    top: 50px;
-    left: 50%;
-    width: 370px;
-    max-width: 100%;
-    height: 100vh;
-    /*background-color: var(--main-color);*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-top: 120px;
-    z-index: 2000;
-    overflow-y: auto;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--main-color);
     text-align: center;
+    padding-top: 50px;
 }
 
-/* Скрытие навигации на маленьких экранах */
 @media (max-width: 1000px) {
-    .header-actions {
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: max-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .header {
         display: flex;
         justify-content: center;
@@ -324,9 +307,7 @@
 
     .header-nav,
     .user-info,
-    .register-link,
-    .header-divider,
-    .login-button {
+    .header-divider {
         display: none;
     }
 
@@ -354,5 +335,73 @@
 
     .title-context {
         max-width: 100%;
+    }
+
+    .reg-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .register-link {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 0.01em;
+        color: var(--white);
+        text-decoration: none;
+        margin: 50px 0 20px;
+    }
+
+    .register-link:hover {
+        color: var(--additional-turquoise-color);
+        opacity: 100%;
+    }
+
+    .login-button {
+        background-color: var(--additional-turquoise-color);
+        width: 295px;
+        height: 52px;
+        /*padding: 12px 50px;*/
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .login-button:hover {
+        background-color: var(--additional-turquoise-color);
+        opacity: 100%;
+        color: var(--main-color);
+    }
+
+    .user-info {
+        font-size: 16px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 75px;
+        text-align: center;
+        height: 80px;
+        color: #FFFFFF;
+    }
+
+
+    .user a {
+        font-size: 16px;
+        color: #FFFFFF;
+        margin: 10px;
+    }
+
+    .avatar img {
+        height: 80px;
+        margin: 50px 0 0;
+    }
+
+    .logout-button:hover {
+        color: var(--additional-turquoise-color);
+        opacity: 100%;
     }
 }
