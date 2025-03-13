@@ -31,13 +31,14 @@ function Results() {
     const [documentsData, setDocumentsData] = useState<DocumentAPI[]>([]);
     const [isError, setIsError] = useState<boolean>(false);
     const [isAllDataLoaded, setIsAllDataLoaded] = useState<boolean>(false);
-    const [visibleDocs, setVisibleDocs] = useState<number>(10);
+    const [visibleDocs, setVisibleDocs] = useState<number>(2);
 
     useEffect(() => {
         if (!isLoggedIn) {
             navigate('/auth');
         }
-    }, [isLoggedIn, navigate]);
+    },
+        [isLoggedIn, navigate]);
 
     useEffect(() => {
         const fetchSearchResults = async () => {
@@ -169,16 +170,19 @@ function Results() {
                 <GeneralSummaryTable searchData={searchData} isLoading={isLoading} isError={isError} />
             <div className="main-container">
                 <h1 className="results-title">Список документов</h1>
+
                 {!isLoading && !isError && documentsData.map((doc) => (
-                    <PublicationCard key={doc.ok.id} {...doc} />
+                    <div className="publications-container">
+                        <PublicationCard key={doc.ok.id} {...doc} />
+                    </div>
                 ))}
                 { isLoading && (
                     <p>Поиск может занять некоторое время, просим сохранять терпение.</p>
                 )}
                 { isError && (
-                    <p className="error-500-message">Ошибка сервера. Попробуйте чуть позже или проверьте свой тариф.</p>
+                    <p>Публикации не найдены.</p>
                 )}
-                {!isAllDataLoaded && <button className="request-btn" onClick={loadMoreDocuments}>Показать больше</button>}
+                {!isAllDataLoaded && <button className="show-more-btn" onClick={loadMoreDocuments}>Показать больше</button>}
             </div>
         </div>
     );

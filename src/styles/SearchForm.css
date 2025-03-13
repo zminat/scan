@@ -19,15 +19,10 @@
     line-height: 16.94px;
 }
 
-.inputContainer {
-    width: 100%;
-}
-
 .label {
     display: block;
     margin: 10px 0;
     font-size: 18px;
-    color: var(--grey);
 }
 
 .input,
@@ -38,6 +33,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
 
 .input,
@@ -63,7 +62,18 @@ select.custom-select:focus {
 }
 
 .dateInput {
-    width: 176px;
+    margin-left: 15px;
+    width: 156px;
+    background: #FFFFFF url('../assets/img/dropdown-arrow.svg') no-repeat right 10px center;
+    border: 1px solid #ccc;
+    padding: 10px 10px 10px 10px; /* Резервируем место под стрелку */
+    -webkit-appearance: none; /* Стиль для Safari */
+    -moz-appearance: none;    /* Стиль для Firefox */
+    appearance: none;         /* Стиль для прочих браузеров */
+}
+
+.dateInput:focus {
+    background: #FFFFFF none no-repeat right 10px center;
 }
 
 .dateRange {
@@ -88,6 +98,37 @@ select.custom-select:focus {
 .button:disabled {
     opacity: 50%;
     cursor: not-allowed;
+}
+
+.required {
+    color: #000000;
+    margin-left: 5px;
+}
+
+.touched-empty {
+    color: #FF0000;
+}
+
+.label-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.input.error,
+.dateInput.error {
+    border-color: #FF0000;
+}
+
+.input.error::placeholder,
+.dateInput.error::placeholder {
+    color: #FF0000;
+}
+
+.error-text {
+    color: #FF0000;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
 }
 
 
@@ -120,12 +161,18 @@ select.custom-select:focus {
     }
 
     select.custom-select {
-        width: 95%;
+        width: 100%;
+        margin: 0;
     }
 
     .dateInput {
-        width: 88%;
+        width: 100%;
         margin-top: 20px;
+    }
+
+    .dateRange {
+        flex-direction: column;
+        align-items: center;
     }
 
     .button-container {
@@ -140,4 +187,7 @@ select.custom-select:focus {
         font-size: 20px;
         width: 100%;
     }
+
+    width: 347px;
+    height: 327px;
 }

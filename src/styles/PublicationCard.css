@@ -1,9 +1,16 @@
 .publication-card {
-    width: 630px;
-    height: 694px;
+    width: 570px;
+    /*height: 694px;*/
     padding: 30px;
-    box-shadow: 0px 0px 10px 0px #00000033;
+    box-shadow: 0 0 10px 0 #00000033;
     border-radius: 10px;
+    margin: 20px;
+}
+
+.publication-info {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
 }
 
 .publication-info {
@@ -14,7 +21,7 @@
 
 .publication, .publication-source {
     font-size: 16px;
-    color: #949494;
+    color: var(--grey);
 }
 
 .publication-source {
@@ -24,8 +31,10 @@
 }
 
 .publication-title {
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0.02em;
     font-size: 26px;
-    /*font-family: 'Inter', sans-serif;*/
     margin-bottom: 10px;
     min-height: 120px;
 }
@@ -40,23 +49,18 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
-    background-color: #FFB64F;
+    background-color: var(--additional-yellow-color);
 }
 
 .publication-picture {
-    min-width: 581px;
-    min-height: 158px;
-    max-width: 581px;
     max-height: 158px;
+    width: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
 
 .publication-content {
-    /*font-family: 'Inter', sans-serif;*/
     font-size: 16px;
-    min-height: 175px;
-    max-height: 175px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -72,39 +76,41 @@
     align-items: center;
 }
 
-.read-more {
+.read-original {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #7CE3E1;
+    background-color: var(--additional-turquoise-color);
     color: black;
     width: 223px;
-    height: 46.54px;
+    height: 47px;
     font-size: 16px;
     text-decoration: none;
+    border-radius: 5px;
+
 }
 
 .publication-footer .read-more:hover {
     cursor: pointer;
-    background-color: #FFB64F;
-    color: #000000;
+    background-color: var(--additional-yellow-color);
+    color: var(--black);
 }
 
 .word-count {
     font-size: 16px;
     opacity: 0.5;
-    margin-top: 15px;
 }
 
 @media (max-width: 1360px) {
     .publication-card {
-        width: 345px;
-        height: 694px;
-        padding: 14px;
+        width: 295px;
+        /*height: 694px;*/
+        padding: 20px;
     }
 
     .publication-date, .publication-source {
         font-size: 14px;
+        color: var(--grey);
     }
 
     .publication-source {
@@ -113,15 +119,9 @@
 
     .publication-title {
         font-size: 19px;
+        letter-spacing: 0.01em;
         margin-bottom: 20px;
         min-height: 100px;
-    }
-
-    .publication-picture {
-        min-width: 315px;
-        min-height: 158px;
-        max-width: 315px;
-        max-height: 158px;
     }
 
     .publication-content {
@@ -134,12 +134,12 @@
 
     .read-more {
         width: 195px;
-        height: 40.7px;
+        height: 41px;
         font-size: 14px;
     }
 
     .word-count {
         font-size: 14px;
-        margin-top: 26px;
+        /*margin-top: 26px;*/
     }
 }

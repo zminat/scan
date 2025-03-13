@@ -3,10 +3,8 @@ import {isBefore, isValid, parseISO} from "date-fns";
 import "../styles/SearchForm.css";
 import Checkboxes from "./Checkboxes.tsx";
 import {useNavigate} from "react-router-dom";
+import validateInn from "./ValidateInn.ts";
 
-const validateINN = (inn: string) => {
-    return /^\d{10}$/.test(inn);
-};
 
 const SearchForm: React.FC = () => {
     const [companyINN, setCompanyINN] = useState("");
@@ -16,6 +14,8 @@ const SearchForm: React.FC = () => {
     const [touchedDocCount, setTouchedDocCount] = useState(false);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [touchedStartDate, setTouchedStartDate] = useState(false);
+    const [touchedEndDate, setTouchedEndDate] = useState(false);
     const navigate = useNavigate();
 
     const [checkboxStates, setCheckboxStates] = useState<Record<string, boolean>>({
@@ -37,7 +37,7 @@ const SearchForm: React.FC = () => {
     const start = parseISO(startDate);
     const end = parseISO(endDate);
 
-    const isINNValid = validateINN(companyINN);
+    const isINNValid = validateInn(String(companyINN));
     const isDocCountValid = docCount !== "" && Number(docCount) >= 1 && Number(docCount) <= 1000;
     const isStartDateValid = startDate && isValid(start) && isBefore(start, today);
     const isEndDateValid = endDate && isValid(end) && isBefore(end, today);
@@ -98,24 +98,74 @@ const SearchForm: React.FC = () => {
         }
     };
 
+    const getINNErrorMessage = () => {
+        if (touchedINN) {
+            if (!companyINN) {
+                return "Обязательное поле";
+            }
+            if (companyINN && !isINNValid) {
+                return "Введите корректные данные";
+            }
+        }
+        return "";
+    };
+
+    const getDocCountErrorMessage = () => {
+        if (touchedDocCount) {
+            if (!docCount) {
+                return "Обязательное поле";
+            }
+            if (docCount && !isDocCountValid) {
+                return "Введите корректные данные";
+            }
+        }
+        return "";
+    };
+
+    const getDateErrorMessage = () => {
+        if (touchedStartDate && !startDate) {
+            return "Обязательное поле";
+        }
+        if (touchedEndDate && !endDate) {
+            return "Обязательное поле";
+        }
+        if (startDate && !isStartDateValid) {
+            return "Введите корректные данные";
+        }
+        if (endDate && !isEndDateValid) {
+            return "Введите корректные данные";
+        }
+        if (startDate && endDate && !isDateRangeValid) {
+            return "Дата начала должна быть меньше или равна дате окончания";
+        }
+        return "";
+    };
+
+
     return (
         <form className="formContainer" onSubmit={handleSearch}>
             <div className="inputsContainer">
                 <div className="inputContainer">
-                    <label className="label">ИНН компании *</label>
+                    <div className="label-container">
+                        <label className="label" htmlFor="inn">ИНН компании</label>
+                        <span className={`required ${touchedINN && !companyINN ? 'touched-empty' : ''}`}>*</span>
+                    </div>
                     <input
+                        id="inn"
+                        className={`input ${touchedINN && !isINNValid ? 'error' : ''}`}
                         type="text"
-                        className={`input`}
                         value={companyINN}
                         onChange={(e) => setCompanyINN(e.target.value)}
                         onBlur={() => setTouchedINN(true)}
-                        placeholder="10 цифр"
+                        placeholder="10 или 12 цифр"
                     />
-                    {touchedINN && !isINNValid && <p className="error-message">ИНН должен содержать 10 цифр</p>}
+                    {getINNErrorMessage() && (
+                        <div className="error-text">{getINNErrorMessage()}</div>
+                    )}
                 </div>
 
-                <div>
-                    <label className="label">Тональность *</label>
+                <div className="inputContainer">
+                    <label className="label">Тональность</label>
                     <select className="custom-select" value={tonality} onChange={(e) => setTonality(e.target.value)}>
                         <option value="any">Любая</option>
                         <option value="positive">Позитивная</option>
@@ -124,52 +174,77 @@ const SearchForm: React.FC = () => {
                 </div>
 
                 <div className="inputContainer">
-                    <label className="label">Количество документов в выдаче *</label>
+                    <div className="label-container">
+                        <label className="label" htmlFor="docCount">Количество документов в выдаче
+                            <span className={`required ${touchedDocCount && !docCount ? 'touched-empty' : ''}`}>*</span>
+                        </label>
+                    </div>
                     <input
+                        id="docCount"
+                        className={`input ${touchedDocCount && !isDocCountValid ? 'error' : ''}`}
                         type="number"
-                        className={`input ${!isDocCountValid && touchedDocCount ? "input-error" : ""}`}
                         value={docCount}
                         onChange={(e) => setDocCount(e.target.value)}
                         onBlur={() => setTouchedDocCount(true)}
                         placeholder="От 1 до 1000"
                     />
-                    {touchedDocCount && !isDocCountValid && <p className="error-message">Введите число от 1 до 1000</p>}
+                    {getDocCountErrorMessage() && (
+                        <div className="error-text">{getDocCountErrorMessage()}</div>
+                    )}
                 </div>
-
             </div>
             <div className="checkboxGroup">
                 <Checkboxes checkboxStates={checkboxStates} handleCheckboxChange={handleCheckboxChange}/>
             </div>
-            <div>
-                <label className="label">Диапазон поиска *</label>
-                <div className="dateRange">
-                    <input
-                        type="date"
-                        className={`dateInput ${!isStartDateValid ? "input-error" : ""}`}
-                        value={startDate}
-                        onChange={(e) => setStartDate(e.target.value)}
-                        placeholder="Дата начала"
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                    />
-                    <input
-                        type="date"
-                        className={`dateInput ${!isEndDateValid ? "input-error" : ""}`}
-                        value={endDate}
-                        onChange={(e) => setEndDate(e.target.value)}
-                        placeholder="Дата конца"
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                    />
+            <div className="inputsContainer">
+                <div className="inputContainer">
+                    <div className="label-container">
+                        <label className="label">Диапазон поиска</label>
+                        <span className={`required ${
+                            ((startDate === "" && touchedStartDate) ||
+                                (endDate === "" && touchedEndDate)) ? 'touched-empty' : ''
+                        }`}>*</span>
+                    </div>
+
+                    <div className="dateRange">
+                        <input
+                            type="text"
+                            className={`dateInput ${touchedStartDate && !isStartDateValid ? 'error' : ''}`}
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            placeholder="Дата начала"
+                            onFocus={handleFocus}
+                            onBlur={(e) => {
+                                handleBlur(e);
+                                setTouchedStartDate(true);
+                            }}
+                        />
+                        <input
+                            type="text"
+                            className={`dateInput ${touchedEndDate && !isEndDateValid ? 'error' : ''}`}
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            placeholder="Дата конца"
+                            onFocus={handleFocus}
+                            onBlur={(e) => {
+                                handleBlur(e);
+                                setTouchedEndDate(true);
+                            }}
+                        />
+                    </div>
+                    {getDateErrorMessage() && (
+                        <div className="error-text">{getDateErrorMessage()}</div>
+                    )}
                 </div>
-                {!isDateRangeValid && <p className="error-message">Дата начала не может быть позже даты конца</p>}
             </div>
-            <div className="button-container">
+            {/*<div className="inputsContainer">*/}
+                <div className="button-container">
                 <button className="button" type="submit" disabled={!isFormValid}>
                     Поиск
                 </button>
                 <p className="note">* Обязательные к заполнению поля</p>
             </div>
+            {/*</div>*/}
         </form>
     );
 };

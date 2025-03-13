@@ -76,9 +76,12 @@
         position: relative;
         margin: 0;
         top: -170px;
+        left: 300px;
+    }
+
+    .documents img {
         width: 58px;
         height: 71px;
-        left: 300px;
     }
 
     .folders {

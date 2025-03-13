@@ -22,6 +22,7 @@ function Header() {
 
     const handleMenuStateChange = (state: { isOpen: boolean | ((prevState: boolean) => boolean); }) => {
         setMenuOpen(state.isOpen);
+        onscroll= function() {return false;}
     };
 
     const handleCloseMenu = () => {
@@ -40,7 +41,7 @@ function Header() {
             cursor: 'context-menu',
             top: '0',
             width: '100%',
-            high: 'auto'
+            high: 'auto',
         },
         bmItemList: {
             display: 'flex',

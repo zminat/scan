@@ -62,6 +62,31 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
 
     const tableWrapperRef = useRef<HTMLDivElement | null>(null);
 
+    const [showLeftArrow, setShowLeftArrow] = useState(false);
+    const [showRightArrow, setShowRightArrow] = useState(false);
+
+    const checkScrollButtons = () => {
+        if (tableWrapperRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = tableWrapperRef.current;
+            setShowLeftArrow(scrollLeft > 0);
+            setShowRightArrow(scrollLeft < scrollWidth - clientWidth);
+        }
+    };
+
+    useEffect(() => {
+        const wrapper = tableWrapperRef.current;
+        if (wrapper) {
+            wrapper.addEventListener('scroll', checkScrollButtons);
+            checkScrollButtons();
+        }
+        return () => {
+            if (wrapper) {
+                wrapper.removeEventListener('scroll', checkScrollButtons);
+            }
+        };
+    }, []);
+
+
     useEffect(() => {
         if (tableWrapperRef.current) {
             tableWrapperRef.current.scrollLeft = 0;
@@ -92,7 +117,9 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
             <h1 className="results-title">Общая сводка</h1>
             <p className="data-count">Найдено данных: {totalDataCount}</p>
             <div className="table-and-arrows-container">
-                <button className="scroll-btn left" onClick={() => scrollTable('left')}></button>
+                {showLeftArrow && (
+                    <button className="scroll-btn left" onClick={() => scrollTable('left')} />
+                )}
                 <div className="table-wrapper-main">
                     <div className="table-headers">
                         <div className="header-title">Период</div>
@@ -106,7 +133,7 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
                             </div>
                         ) : isError ? (
                             <div className="table-data">
-                                <p className="error-500-message">Ошибка сервера. Попробуйте чуть позже или проверьте свой тариф.</p>
+                                <p className="error-message">Ошибка сервера. Попробуйте чуть позже или проверьте свой тариф.</p>
                             </div>
                         ) : (
                             <div className="table-data">
@@ -124,7 +151,9 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
                         )}
                     </div>
                 </div>
-                <button className="scroll-btn right" onClick={() => scrollTable('right')}></button>
+                {showRightArrow && (
+                    <button className="scroll-btn" onClick={() => scrollTable('right')} />
+                )}
             </div>
         </div>
     );
