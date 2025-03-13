@@ -61,10 +61,8 @@ const Carousel: React.FC = () => {
 
     useEffect(() => {
         const updateSlidesToShow = () => {
-            if (window.innerWidth <= 850) {
+            if (window.innerWidth <= 1360) {
                 setSlidesToShow(1);
-            } else if (window.innerWidth <= 1250) {
-                setSlidesToShow(2);
             } else {
                 setSlidesToShow(3);
             }

@@ -42,14 +42,21 @@
 }
 
 .documents {
+    max-width: 400px;
     display: flex;
     flex-direction: row;
-    gap: 40%;
+    gap: 10%;
+    align-items: center;
 }
 
-.document img {
+.document {
+    max-height: 111px;
     margin: 63px 64px 14px 62px;
     width: 91px;
+}
+
+.folders {
+    max-height: 68px;
 }
 
 @media screen and (max-width: 1360px) {

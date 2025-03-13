@@ -14,7 +14,7 @@ function Main() {
     const { isLoggedIn } = useAuth();
     return (
         <div>
-            <div className="search">
+            <div className="about-container">
                 <div className="container">
                     <div className="title-container">
                         <h1>сервис по поиску публикаций о{'\u00A0'}компании по{'\u00A0'}его ИНН</h1>
@@ -27,7 +27,7 @@ function Main() {
                         Запросить данные
                     </button>
                 </div>
-                <div className="search-img">
+                <div className="about-img">
                     <img src={SearchImg} alt="сервис по поиску публикаций о компании по его ИНН" />
                 </div>
             </div>

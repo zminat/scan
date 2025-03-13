@@ -161,7 +161,7 @@ function Results() {
 
     return (
         <div>
-            <div className="search">
+            <div className="waiting-results-container">
                 <div className="container">
                     <h1>Ищем. Скоро будут результаты</h1>
                     <p className="title-context">Поиск может занять некоторое время, просим сохранять терпение.</p>
@@ -182,7 +182,7 @@ function Results() {
                 { isError && (
                     <p>Публикации не найдены.</p>
                 )}
-                {!isAllDataLoaded &&
+                {!isLoading && !isError && !isAllDataLoaded &&
                 <div className="show-more-container">
                     <button className="button show-more" onClick={loadMoreDocuments}>
                         Показать больше

@@ -33,9 +33,9 @@ function Header() {
         bmBurgerButton: {
             display: 'none'
             },
-        // bmItem: {
-        //     display: 'inline-block'
-        // },
+        bmMenu: {
+            overflow: 'hidden',
+        },
         bmMenuWrap: {
             background: 'var(--main-color)',
             cursor: 'context-menu',

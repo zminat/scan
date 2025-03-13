@@ -8,9 +8,9 @@
     width: 730px;
 }
 
-.search {
+.about-container {
     position: relative;
-    max-width: 1440px;
+    max-width: 1340px;
     display: flex;
     margin: 0 2%;
     justify-content: space-between;
@@ -18,7 +18,7 @@
     top: 109px;
 }
 
-.search h1 {
+.about-container h1 {
     margin: 0;
     font-family: "Ferry", serif;
     text-transform: uppercase;
@@ -38,7 +38,7 @@
 /*    text-align: left;*/
 /*}*/
 
-.search .request-btn {
+.about-container .request-btn {
     width: 335px;
     height: 59px;
     margin-top: 20px;
@@ -52,17 +52,11 @@
     cursor: pointer;
 }
 
-.search .request-btn:hover {
+.about-container .request-btn:hover {
     opacity: 0.6;
 }
 
-.search .search-img {
-    position: relative;
-    transform: translateY(-27px);
-    width: 0;
-}
-
-.search-img {
+.about-img {
     max-width: 100%;
     height: auto;
 }
@@ -76,25 +70,16 @@
 
 
 @media (max-width: 1360px) {
-    .search .search-img {
-        align-self: center;
-        transform: translateY(0px);
-        width: 330px;
+    .main-container {
+        width: 100%;
+        max-width: 375px;
+        margin: 0 auto;
     }
 
-    .search img {
-        width: 330px;
-    }
-
-    .why-us {
-        justify-content: flex-start;
-    }
-
-    .why-us img {
-        height: 392px;
-    }
-
-    .search {
+    .about-container {
+        width: 100%;
+        max-width: 375px;
+        margin: 0 auto;
         justify-content: center;
         flex-direction: column;
         align-items: center;
@@ -104,17 +89,36 @@
         width: 100%;
     }
 
-    .search .request-btn {
+    .about-container h1 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .about-img {
+        align-self: center;
+        transform: translateY(0px);
+        width: 330px;
+    }
+
+    .about-container img {
+        width: 330px;
+    }
+
+    .request-btn {
         width: 100%;
         margin-top: 0;
     }
 
-    .title-context {
-        max-width: 100%;
+    .why-us {
+        justify-content: flex-start;
+        max-width: 375px;
     }
 
-    .search h1 {
-        font-size: 28px;
-        line-height: 34px;
+    .why-us img {
+        height: 392px;
+    }
+
+    .title-context {
+        max-width: 100%;
     }
 }

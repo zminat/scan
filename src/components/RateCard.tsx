@@ -33,7 +33,7 @@ const RateCard: React.FC<RateCardProps> = ({
     return (
         <div
             className={`rate-card ${isCurrent ? 'current' : ''}`}
-            style={{ borderColor: isActive ? backgroundColor : '#ddd' }}
+            style={{ borderColor: isActive || isCurrent ? backgroundColor : '#ddd' }}
             onClick={onClick}
         >
             <div

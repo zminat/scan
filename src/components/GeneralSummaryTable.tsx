@@ -114,9 +114,9 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
     };
 
     return (
-        <div className="main-container">
-            <h1 className="results-title">Общая сводка</h1>
-            <p className="data-count">Найдено данных: {totalDataCount}</p>
+        <div className="table-container">
+            <h1 className="table-results-title">Общая сводка</h1>
+            <p className="data-count">Найдено {totalDataCount} вариантов</p>
             <div className="table-and-arrows-container">
                 {showLeftArrow && (
                     <button className="scroll-btn left" onClick={() => scrollTable('left')} />

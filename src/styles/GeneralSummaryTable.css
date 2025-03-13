@@ -1,3 +1,11 @@
+.table-results-title {
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    margin-bottom: 17px;
+}
+
 .data-count {
     margin-bottom: 20px;
     color: var(--grey);
@@ -143,6 +151,16 @@
 }
 
 @media (max-width: 1360px) {
+    .title-container {
+        margin: 0;
+    }
+
+    .table-results-title {
+        font-size: 28px;
+        letter-spacing: 0.01em;
+        margin-bottom: 10px;
+    }
+
     .table-and-arrows-container {
         width: 350px;
         margin: 0;
