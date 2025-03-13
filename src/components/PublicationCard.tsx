@@ -15,6 +15,26 @@ function cleanHtmlContent(htmlContent: string): string {
     return decodedHtml.replace(/(<([^>]+)>)/gi, "");
 }
 
+const getWordForm = (count: number): string => {
+    const lastDigit = count % 10;
+    const lastTwoDigits = count % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+        return 'слов';
+    }
+
+    if (lastDigit === 1) {
+        return 'слово';
+    }
+
+    if (lastDigit >= 2 && lastDigit <= 4) {
+        return 'слова';
+    }
+
+    return 'слов';
+};
+
+
 const PublicationCard = (props: DocumentAPI) => {
     const [cleanContent, setCleanContent] = useState<string>("");
 
@@ -46,7 +66,7 @@ const PublicationCard = (props: DocumentAPI) => {
                 <a href={props.ok.url} className="read-original" target="_blank" rel="noopener noreferrer">
                     Читать в источнике
                 </a>
-                <span className="word-count">{props.ok.attributes.wordCount} слова</span>
+                <span className="word-count">{props.ok.attributes.wordCount} {getWordForm(props.ok.attributes.wordCount)}</span>
             </div>
         </div>
     );

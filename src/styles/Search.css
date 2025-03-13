@@ -52,7 +52,7 @@
     width: 91px;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1360px) {
     .search {
         max-width: 375px;
         flex-direction: column;
@@ -60,7 +60,7 @@
 
     .search h1 {
         font-size: 28px;
-        line-height: 33.6px;
+        line-height: 34px;
     }
 
     .title-container {

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { LOGIN_INFO_URL } from "./API.tsx";
 import { useAuth } from "./AuthContext.tsx";
 import "../styles/Header.css";
+import loading_icon from "../assets/img/spinner.png"
 
 
 interface AccountInfo {
@@ -33,32 +34,32 @@ const LimitInfo: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="limit-info">
-                <span className="loader"></span>
+            <div className="limit-info-container">
+                <div className="limit-data">
+                    <img src={loading_icon} alt="Loading" className="loading-icon" />
+                </div>
             </div>
         );
     }
 
     if (!accountInfo) {
         return (
-            <div className="limit-info">
-                <p>Не удалось загрузить данные о лимитах</p>;
+            <div className="limit-info-container">
+                <div className="limit-data">
+                    <p>Не удалось загрузить данные о лимитах</p>;
+                </div>
             </div>
         )
     }
 
     return (
-        <div className="limit-info">
-            <div className="limit-info-text">
-                Использовано компаний
-                <br />
-                Лимит по компаниям
-            </div>
-            <div className="limit-info-quantity">
-                <span className="limit-quantity">{accountInfo.eventFiltersInfo.usedCompanyCount}</span>
-                <br />
-                <span className="limit-quantity-green">{accountInfo.eventFiltersInfo.companyLimit}</span>
-            </div>
+        <div className="limit-info-container">
+                <div className="limit-data">
+                    <div className="text-item">Использовано компаний</div>
+                    <div className="number-item used-quantity">{accountInfo.eventFiltersInfo.usedCompanyCount}</div>
+                    <div className="text-item">Лимит по компаниям</div>
+                    <div className="number-item limit-quantity">{accountInfo.eventFiltersInfo.companyLimit}</div>
+                </div>
         </div>
     );
 };

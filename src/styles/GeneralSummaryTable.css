@@ -46,12 +46,7 @@
 .table-wrapper {
     overflow-x: auto;
     border-radius: 10px;
-    scrollbar-width: none; /* Для Firefox */
-    -ms-overflow-style: none; /* Для Internet Explorer и Edge */
-}
-
-.table-wrapper::-webkit-scrollbar {
-    display: none; /* Для WebKit-браузеров, таких как Chrome и Safari */
+    scrollbar-width: none;
 }
 
 .table-headers {
@@ -72,8 +67,9 @@
 
 .table-data-loading {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .table-headers > div, .data-row > div {
@@ -89,13 +85,37 @@
 
 .table-divider {
     height: 124px;
-    width: 2px;
     background-color: var(--grey);
     opacity: 0.4;
     margin: auto 17px;
     display: block;
-    position: relative;
+    padding: 0 1px;
+}
 
+.table-data-loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 430px;
+}
+
+.loading-icon-general-summary {
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-sign {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 3px;
 }
 
 .scroll-btn {
@@ -177,11 +197,8 @@
     .data-row {
         display: flex;
         flex-direction: row;
-        max-width: 298px;
-        min-width: 298px;
         width: 298px;
     }
-
 
     .divider {
         display: none;
@@ -229,5 +246,4 @@
     .table-divider {
         display: none;
     }
-
 }

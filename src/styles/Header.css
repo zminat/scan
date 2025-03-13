@@ -37,7 +37,7 @@
     font-family: Inter, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 16.94px;
+    line-height: 17px;
     text-decoration: none;
     color: black;
     text-align: center;
@@ -59,7 +59,7 @@
     font-family: Inter, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 16.94px;
+    line-height: 17px;
     letter-spacing: 0.01em;
     text-decoration: none;
     color: black;
@@ -83,7 +83,7 @@
     font-family: Inter, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    line-height: 16.94px;
+    line-height: 17px;
     letter-spacing: 0.01em;
     color: var(--black);
     background-color: var(--additional-turquoise-color);
@@ -112,7 +112,7 @@
 .user span{
     font-size: 14px;
     font-weight: 400;
-    line-height: 16.94px;
+    line-height: 17px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     /*text-align: right;*/
@@ -121,7 +121,7 @@
 .user a {
     font-size: 10px;
     font-weight: 400;
-    line-height: 12.1px;
+    line-height: 12px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     opacity: 40%;
@@ -147,7 +147,18 @@
     color: var(--main-color);
 }
 
-.limit-info {
+.limit-info-container {
+    /*display: flex;*/
+    /*flex: 0 0 175px;*/
+    /*height: 63px;*/
+    /*width: 100%;*/
+    /*min-width: 175px;*/
+    /*margin-right: 130px;*/
+    /*border-radius: 5px;*/
+    /*background-color: #F3F3F3;*/
+    /*border: none;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -161,36 +172,67 @@
     vertical-align: middle;
 }
 
-.limit-info-text {
-    padding: 7px 10px 7px 10px;
+.limit-data {
+    display: grid;
+    grid-template-columns: 3.2fr 0.8fr;
+    grid-row-gap: 0;
+    grid-column-gap: 5px;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 10px;
+
+}
+
+.text-item, .number-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.text-item {
+    text-align: right;
+    justify-content: flex-end;
     font-size: 10px;
     font-weight: 400;
-    line-height: 18px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    text-align: right;
-    opacity: 40%;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+
+}
+
+.used-quantity {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-left: 2px;
 }
 
 .limit-quantity {
+    opacity: 1;
     font-size: 14px;
-    font-weight: 700;
-    line-height: 17px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-}
-
-.limit-quantity-green {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 17px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
     color: #8AC540;
+    margin-left: 2px;
+    font-weight: 700;
+    line-height: 17px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
 }
 
+.loader {
+    font-size: 18px;
+    animation: spin 2s linear infinite;
+    background-image: url("../assets/img/spinner.png");
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
 .menu-nav {
     display: flex;
@@ -285,6 +327,7 @@
     justify-content: center;
     gap: 49px;
     flex-grow: 1;
+    margin-right: 200px;
 }
 
 .menu-page {
@@ -403,5 +446,25 @@
     .logout-button:hover {
         color: var(--additional-turquoise-color);
         opacity: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .limit-info-container {
+        margin: 3em;
+        flex: 0 0 132px;
+        height: 75px;
+        width: 100%;
+        min-width: 132px;
+    }
+
+    .limit-data {
+        display: flex;
+        flex-direction: column;
+        row-gap: 3px;;
+    }
+
+    .text-item, .number-item {
+        justify-content: left;
     }
 }

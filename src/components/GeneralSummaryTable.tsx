@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import '../styles/GeneralSummaryTable.css';
+import loading_icon from "../assets/img/spinner.png"
 
 interface HistogramItem {
     date: string;
@@ -128,8 +129,9 @@ const GeneralSummaryTable: React.FC<GeneralSummaryTableProps> = ({ searchData, i
                     </div>
                     <div className="table-wrapper" ref={tableWrapperRef}>
                         {isLoading ? (
-                            <div className="table-data">
-                                <span className="loader"></span>
+                            <div className="table-data-loading">
+                                <img src={loading_icon} alt="Loading" className="loading-icon-general-summary" />
+                                <p className="loading-sign">Загружаем данные...</p>
                             </div>
                         ) : isError ? (
                             <div className="table-data">

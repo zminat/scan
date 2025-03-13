@@ -1,3 +1,4 @@
+import "../styles/Result.css";
 import "../styles/Main.css";
 import SearchingWomanImg from "../assets/img/SearchingWomanImg.svg";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -168,21 +169,26 @@ function Results() {
                 <img src={SearchingWomanImg} alt="Ожидание выдачи результатов" />
             </div>
                 <GeneralSummaryTable searchData={searchData} isLoading={isLoading} isError={isError} />
-            <div className="main-container">
+            <div className="publications-block">
                 <h1 className="results-title">Список документов</h1>
-
-                {!isLoading && !isError && documentsData.map((doc) => (
-                    <div className="publications-container">
-                        <PublicationCard key={doc.ok.id} {...doc} />
-                    </div>
-                ))}
+                <div className="publications-container">
+                    {!isLoading && !isError && documentsData.map((doc) => (
+                            <PublicationCard key={doc.ok.id} {...doc} />
+                    ))}
+                </div>
                 { isLoading && (
                     <p>Поиск может занять некоторое время, просим сохранять терпение.</p>
                 )}
                 { isError && (
                     <p>Публикации не найдены.</p>
                 )}
-                {!isAllDataLoaded && <button className="show-more-btn" onClick={loadMoreDocuments}>Показать больше</button>}
+                {!isAllDataLoaded &&
+                <div className="show-more-container">
+                    <button className="button show-more" onClick={loadMoreDocuments}>
+                        Показать больше
+                    </button>
+                </div>
+                }
             </div>
         </div>
     );

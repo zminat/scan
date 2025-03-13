@@ -68,24 +68,14 @@
 }
 
 .why-us {
-    margin: 2% 50px 2% 0px;
+    margin: 2% 50px 2% 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-@media (max-width: 1350px) {
-    .search img {
-        width: 347px;
-        height: 327px;
-    }
-}
 
-@media (max-width: 1000px) {
-    .search {
-        display: block;
-    }
-
+@media (max-width: 1360px) {
     .search .search-img {
         align-self: center;
         transform: translateY(0px);
@@ -105,8 +95,9 @@
     }
 
     .search {
-        display: flex;
+        justify-content: center;
         flex-direction: column;
+        align-items: center;
     }
 
     .container {
@@ -124,6 +115,6 @@
 
     .search h1 {
         font-size: 28px;
-        line-height: 33.6px;
+        line-height: 34px;
     }
 }
